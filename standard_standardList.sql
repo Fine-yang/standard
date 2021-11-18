@@ -8,7 +8,7 @@ create table standardList
     number        varchar(100) null,
     effectiveness varchar(20)  null,
     scope         int          null
-);
+)DEFAULT  CHARSET=utf8;
 
 INSERT INTO standard.standardList (standard_id, industry, region, standard, number, effectiveness, scope) VALUES (1, '造纸', '中国', '清洁生产标准造纸工业(漂白碱法蔗渣浆生产工艺)', 'HJ/T 317-2006', '是', 1);
 INSERT INTO standard.standardList (standard_id, industry, region, standard, number, effectiveness, scope) VALUES (2, '造纸', '中国', '清洁生产标准造纸工业(漂白化学烧碱法麦草浆生产工艺)', 'HJ/T 339-2007', '是', 1);

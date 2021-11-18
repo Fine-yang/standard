@@ -8,7 +8,7 @@ create table standardListEng
     number         varchar(100) null,
     effectiveness  varchar(20)  null,
     scope          int          null
-);
+)DEFAULT  CHARSET=utf8;
 
 INSERT INTO standard.standardListEng (standardEng_id, industry, region, standard, number, effectiveness, scope) VALUES (1, 'Paper  Industry', 'China', 'Standard', 'HJ/T 317-2006', 'YES', 1);
 INSERT INTO standard.standardListEng (standardEng_id, industry, region, standard, number, effectiveness, scope) VALUES (2, 'Paper  Industry', 'China', 'Cleaner production standard–Production of bleached soda straw pulp, paper industry', 'HJ/T 339-2007', 'YES', 1);
