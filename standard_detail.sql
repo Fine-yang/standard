@@ -7,7 +7,7 @@ create table detail
     standard      varchar(200) null,
     number        varchar(200) null,
     effectiveness varchar(20)  null,
-    abstracts     varchar(300) null,
+    abstracts     varchar(600) null,
     link          varchar(200) null,
     scope         int          null,
     year          int          null
