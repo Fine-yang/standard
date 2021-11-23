@@ -11,7 +11,7 @@ create table detailEng
     link          varchar(200) null,
     scope         int          null,
     year          int          null
-);
+)DEFAULT  CHARSET=utf8;
 
 INSERT INTO standard.detailEng (detailEng_id, industry, region, standard, number, effectiveness, abstracts, link, scope, year) VALUES (1, 'Paper  Industry', 'China', 'Cleaner production standard— Process of bleached alkali bagasse pulp in paper industry', 'HJ/T 317-2006', 'YES', 'This standard specifies the requirements for cleaner production in the paper industry ( Process of bleached alkali bagasse pulp).', 'https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/other/qjscbz/200611/t20061129_96653.shtml', 1, 2006);
 INSERT INTO standard.detailEng (detailEng_id, industry, region, standard, number, effectiveness, abstracts, link, scope, year) VALUES (2, 'Paper  Industry', 'China', 'Cleaner production standard–Production of bleached soda straw pulp, paper industry', 'HJ/T 339-2007', 'YES', 'The standard provides general requirements for cleaner production in paper industry ( production of bleached soda straw pulp ) .', null, 1, 2007);

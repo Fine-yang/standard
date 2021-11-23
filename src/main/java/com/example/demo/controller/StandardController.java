@@ -28,4 +28,10 @@ public class StandardController {
         System.out.println(id);
         return standardService.getStandardDetailById(id);
     }
+    @GetMapping({"detail/{id}"})
+    public String detail(@PathVariable("id") int id){
+        System.out.println(id);
+        return "detail";
+    }
+
 }

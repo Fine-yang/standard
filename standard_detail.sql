@@ -11,7 +11,7 @@ create table detail
     link          varchar(200) null,
     scope         int          null,
     year          int          null
-);
+)DEFAULT  CHARSET=utf8;
 
 INSERT INTO standard.detail (detail_id, industry, region, standard, number, effectiveness, abstracts, link, scope, year) VALUES (1, '造纸', '中国', '清洁生产标准造纸工业(漂白碱法蔗渣浆生产工艺)', 'HJ/T 317-2006', '是', '标准规定了造纸工业（漂白碱法蔗渣浆生产工艺）的清洁生产要求。', 'https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/other/qjscbz/200611/t20061129_96653.shtml', 1, 2006);
 INSERT INTO standard.detail (detail_id, industry, region, standard, number, effectiveness, abstracts, link, scope, year) VALUES (2, '造纸', '中国', '清洁生产标准造纸工业(漂白化学烧碱法麦草浆生产工艺)', 'HJ/T 339-2007', '是', '标准规定了造纸工业（漂白化学烧碱法麦草浆生产工艺）企业清洁生产的一般要求。', null, 1, 2007);
