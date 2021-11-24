@@ -3,7 +3,7 @@
 <head>
     <script type="text/javascript" th:src="@{/plugins/jquery/jquery.min.js}"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/DataTables/datatables.min.css}"/>
-    <script type="text/javascript" th:src="@{D/ataTables/datatables.min.js}"></script>
+    <script type="text/javascript" th:src="@{/DataTables/datatables.min.js}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/plugins/bootstrap/css/bootstrap-table.min.css}"/>
@@ -68,57 +68,58 @@
             }else {$(".navbar-fixed-top").removeClass("top-nav");}
         })</script>
 
-    <div class="panel  panel-default" style="margin-left: 10%; margin-right: 10%; width: 80%; position: absolute ; top: 30%">
+    <div class="panel  panel-success" style="margin-left: 20%; margin-right: 20%; width: 60%; position: absolute ; top: 30%">
 
-        <div class="panel-heading">
-            <h3  class="panel-title">Standard</h3>
+        <div class="panel-heading" >
+
+            <h3 ><div class="glyphicon glyphicon-flag"></div>  Paper Industry Standard</h3>
         </div>
 
-        <div class="panel-body" >
-            <div id="toolbar" style="margin-bottom: 5%">
-                <form  class="form-inline">
-                    <div class="form-group ">
-                        <label class="sr-only" for="industry-select" >Industry</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">Industry</div>
-                            <select  id="industry-select"  name="industry" class="form-control">
-                                <option >Select an industry...</option>
-                            </select>
-                        </div>
+        <div class="panel-body"  >
+<!--            <div id="toolbar" style="margin-bottom: 5%; margin-left: 10%">-->
+<!--                <form  class="form-inline">-->
+<!--                    <div class="form-group ">-->
+<!--                        <label class="sr-only" for="industry-select" >Industry</label>-->
+<!--                        <div class="input-group">-->
+<!--                            <div class="input-group-addon">Industry</div>-->
+<!--                            <select  id="industry-select"  name="industry" class="form-control">-->
+<!--                                <option >Select an industry...</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
 
-                    </div>
-                    <div class="form-group ">
-                        <label class="sr-only" for="region-select" >Region</label>
-                        <div class="input-group">
-                            <div class="input-group-addon">Region</div>
-                            <select  id="region-select"  name="region" class="form-control">
-                                <option >Select a region...</option>
-                            </select>
-                        </div>
+<!--                    </div>-->
+<!--                    <div class="form-group ">-->
+<!--                        <label class="sr-only" for="region-select" >Region</label>-->
+<!--                        <div class="input-group">-->
+<!--                            <div class="input-group-addon">Region</div>-->
+<!--                            <select  id="region-select"  name="region" class="form-control">-->
+<!--                                <option >Select a region...</option>-->
+<!--                            </select>-->
+<!--                        </div>-->
 
-                    </div>
+<!--                    </div>-->
 
-                    <button  id="search-button" type="button" class="btn btn-primary queryButton">Search</button>
+<!--                    <button  id="search-button" type="button" class="btn btn-default queryButton">Search</button>-->
 
 
-                </form>
+<!--                </form>-->
 
-            </div>
-            <div id="standard-list">
-                <dl class="list-group">
-                    <dt>
-                        <a class="standard-title" href="#">
-                        <h4 class="list-group-item-heading" >清洁生产标准造纸工业(漂白碱法蔗渣浆生产工艺)</h4>
-                        </a>
-                    </dt>
-                    <span class="label label-default">行业:</span>
-                    <span class="label label-info">国家:</span>
-                    <span class="label label-info">标准号:</span>
-                    <span class="label label-info">是否现行:</span>
-                    <span class="label label-info">范围:</span>
-                    <dd class="list-group-item-text" style="margin-top: 2%; height: 60px; overflow: hidden">标准规定了造纸工业（漂白碱法蔗渣浆生产工艺）的清洁生产要求。</dd>
-                </dl>
-                <hr class="simple" color="#6f5499" />
+<!--            </div>-->
+            <div id="standard-list" style="margin-top: 5% ;margin-left: 10%; margin-right: 10%;  "  >
+<!--                <dl class="list-group">-->
+<!--                    <dt>-->
+<!--                        <a class="standard-title" href="#">-->
+<!--                        <h4 class="list-group-item-heading" >清洁生产标准造纸工业(漂白碱法蔗渣浆生产工艺)</h4>-->
+<!--                        </a>-->
+<!--                    </dt>-->
+<!--                    <span class="label label-default">行业:</span>-->
+<!--                    <span class="label label-info">国家:</span>-->
+<!--                    <span class="label label-info">标准号:</span>-->
+<!--                    <span class="label label-info">是否现行:</span>-->
+<!--                    <span class="label label-info">范围:</span>-->
+<!--                    <dd class="list-group-item-text" style="margin-top: 2%; height: 60px; overflow: hidden">标准规定了造纸工业（漂白碱法蔗渣浆生产工艺）的清洁生产要求。</dd>-->
+<!--                </dl>-->
+<!--                <hr class="simple" color="#6f5499" />-->
 
             </div>
 
