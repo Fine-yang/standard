@@ -21,6 +21,10 @@
         .my-navbar a{background:transparent !important;color:#fff !important}
         .my-navbar a:hover {color:#45bcf9 !important;background:transparent;outline:0}
         .my-navbar a {transition: color 0.5s ease-in-out;}/*-webkit-transition ;-moz-transition*/
+        /*#chinese {width: 100px !important}*/
+        /*#english {width: 100px !important}*/
+        /*#chinese:hover  {color:#45bcf9 !important;background:transparent;outline:0}*/
+        /*#english:hover  {color:#45bcf9 !important;background:transparent;outline:0}*/
         .top-nav {padding:0;background:#343a40; opacity: 80%;}
         button.navbar-toggle {background-color:#fbfbfb;}/*整个背景都是transparent透明的，会看不到，所以再次覆盖一下*/
         button.navbar-toggle > span.icon-bar {background-color:#dedede}
@@ -38,24 +42,41 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Belt and Road Initiative Paper Industry Lifecycle Carbon Accounting Database</a>
+                <a id="page-title" class="navbar-brand" href="#">BRI-CPIS(Belt and Road Initiative Industry Cleaner Production Indicators and Standards Database)</a>
             </div>
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Population</a></li>
-                    <li class="active"><a href="#">Standard</a></li>
-                    <li><a href="#">Others</a></li>
+                    <li ><a id="population" href="#">Population</a></li>
+                    <li class="active"><a id="standard"  href="#">Standard</a></li>
+                    <li ><a  id="others"  href="#">Others</a></li>
                 </ul>
+<!--                <button type="button" class="btn btn-danger dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    Select language<span class="caret"></span>-->
+<!--                    <span class="sr-only">Toggle Dropdown</span>-->
+<!--                </button>-->
+<!--                <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">-->
+<!--                    <li><a href="#">Regular link</a></li>-->
+<!--                    <li class="disabled"><a href="#">Disabled link</a></li>-->
+<!--                    <li><a href="#">Another link</a></li>-->
+<!--                </ul>-->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Register</a></li>
+                    <li ><a id="login"  href="#">Login</a></li>
+                    <li ><a  id="register" href="#">Register</a></li>
+                    <li class="dropdown"><a id="language" class="dropdown-toggle" data-toggle="dropdown" href="#">Language<b class="caret"></b></a>
+                        <ul class="dropdown-menu" style="text-align: right; background-color: rgba(0,0,0,0.3);  width: 100px !important;">
+                            <li><a id="chinese" href="#" >Chinese</a></li>
+                            <li><a id="english"  href="#" >English</a></li>
+                        </ul>
+
+                    </li>
+<!--                    <li ><a  id="change-lang" >Chan</a></li>-->
                 </ul>
                 <form class="navbar-form navbar-right">
 <!--                    <button id="chang-bg" class="btn" >Change background</button>-->
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search...">
+                        <input id="search-filed" type="text" class="form-control" placeholder="Search...">
                     </div>
-                    <button type="submit" class="btn btn-default">Search</button>
+                    <button id="search"  type="submit" class="btn btn-default">Search</button>
                 </form>
 
             </div>
@@ -72,7 +93,7 @@
 
         <div class="panel-heading" >
 
-            <h3 ><div class="glyphicon glyphicon-flag"></div>  Paper Industry Standard</h3>
+            <h3 id="panel-title"><div class="glyphicon glyphicon-flag"></div>  Paper Industry Standard</h3>
         </div>
 
         <div class="panel-body"  >
@@ -106,21 +127,6 @@
 
 <!--            </div>-->
             <div id="standard-list" style="margin-top: 5% ;margin-left: 10%; margin-right: 10%;  "  >
-<!--                <dl class="list-group">-->
-<!--                    <dt>-->
-<!--                        <a class="standard-title" href="#">-->
-<!--                        <h4 class="list-group-item-heading" >清洁生产标准造纸工业(漂白碱法蔗渣浆生产工艺)</h4>-->
-<!--                        </a>-->
-<!--                    </dt>-->
-<!--                    <span class="label label-default">行业:</span>-->
-<!--                    <span class="label label-info">国家:</span>-->
-<!--                    <span class="label label-info">标准号:</span>-->
-<!--                    <span class="label label-info">是否现行:</span>-->
-<!--                    <span class="label label-info">范围:</span>-->
-<!--                    <dd class="list-group-item-text" style="margin-top: 2%; height: 60px; overflow: hidden">标准规定了造纸工业（漂白碱法蔗渣浆生产工艺）的清洁生产要求。</dd>-->
-<!--                </dl>-->
-<!--                <hr class="simple" color="#6f5499" />-->
-
             </div>
 
         </div>
