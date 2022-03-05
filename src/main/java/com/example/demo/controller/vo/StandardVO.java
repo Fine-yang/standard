@@ -66,7 +66,7 @@ public class StandardVO implements Serializable {
         return abstracts;
     }
 
-    public void set_abstract(String abstracts) {
+    public void setAbstracts(String abstracts) {
         this.abstracts = abstracts;
     }
 

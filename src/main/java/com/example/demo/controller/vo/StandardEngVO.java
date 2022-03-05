@@ -1,6 +1,8 @@
-package com.example.demo.entity;
+package com.example.demo.controller.vo;
 
-public class Standard {
+import java.io.Serializable;
+
+public class StandardEngVO implements Serializable {
     private int detail_id;
     private String industry;
     private String region;

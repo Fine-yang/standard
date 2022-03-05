@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.StandardDetailEngMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.StandardEng">
+        <id column="detail_id" jdbcType="INTEGER" property="detail_id"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="region" jdbcType="VARCHAR" property="region"/>
+        <result column="standard" jdbcType="VARCHAR" property="standard"/>
+        <result column="number" jdbcType="VARCHAR" property="number"/>
+        <result column="effectiveness" jdbcType="VARCHAR" property="effectiveness"/>
+        <result column="abstracts" jdbcType="VARCHAR" property="abstracts"/>
+        <result column="link" jdbcType="VARCHAR" property="link"/>
+        <result column="scope" jdbcType="INTEGER" property="scope"/>
+        <result column="year" jdbcType="INTEGER" property="year"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        detail_id,industry,region,standard,number,effectiveness,abstracts,link,scope,year
+    </sql>
+<!--    <select id="getStandardList" resultMap="BaseResultMap">-->
+<!--        select-->
+<!--        <include refid="Base_Column_List"/>-->
+<!--        from detail-->
+<!--    </select>-->
+    <select id="selectStandardDetailEngById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from detailEng
+        where detail_id=#{detail_id,jdbcType=INTEGER}
+    </select>
+
+</mapper>

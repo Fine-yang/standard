@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-public class Standard {
+public class StandardEng {
     private int detail_id;
     private String industry;
     private String region;
@@ -18,6 +18,10 @@ public class Standard {
 
     public void setDetail_id(int detail_id) {
         this.detail_id = detail_id;
+    }
+
+    public void setAbstracts(String abstracts) {
+        this.abstracts = abstracts;
     }
 
     public String getIndustry() {
@@ -62,10 +66,6 @@ public class Standard {
 
     public String getAbstracts() {
         return abstracts;
-    }
-
-    public void setAbstracts(String abstracts) {
-        this.abstracts = abstracts;
     }
 
     public String getLink() {

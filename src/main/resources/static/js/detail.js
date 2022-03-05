@@ -37,11 +37,11 @@ $(document).ready(function () {
 
         var lang = getCookie("language")
 
-        if (lang != "chinese" && lang !="english"){
+        if (lang !== "chinese" && lang !=="english"){
             setCookie("language", "english", 7);
         }
 
-        if (lang == "chinese") {
+        if (lang === "chinese") {
             $("#page-title").html("“一带一路”工业清洁生产指标体系与标准数据平台");
             $("#population").html("人口");
             $("#standard").html("标准");
@@ -63,8 +63,8 @@ $(document).ready(function () {
 
     function getDetail(language){
         var url= "/getDetail/"
-        if(language=="english"){
-            url="/getDetail/"
+        if(language==="english"){
+            url="/getEngDetail/"
         }
         $.ajax({
             // url : '/initTable',
@@ -77,6 +77,7 @@ $(document).ready(function () {
                 console.log(arr)
                 detail_title.html("")
                 $.each(arr, function(i, item) {
+
                     var detail_id = item["detail_id"];
                     var industry = item["industry"];
                     var region = item["region"];
@@ -89,25 +90,25 @@ $(document).ready(function () {
                     var link = item["link"]
 
                     if (number == null){
-                        number = "无"
+                        number = (language==="english")?"null":"无";
                     }
                     if(abstracts ==null){
-                        abstracts = "暂无简介"
+                        abstracts = (language==="english")?"No abstracts":"暂无简介";
                     }
                     if(standard ==null){
-                        standard = "暂未命名"
+                        standard = (language==="english")?"No standard":"暂未命名";
                     }
-                    if(language=="english"){
-                        if (number == null){
-                            number = "null"
-                        }
-                        if(abstracts ==null){
-                            abstracts = "null"
-                        }
-                        if(standard ==null){
-                            standard = "null"
-                        }
-                    }
+                    // if(language=="english"){
+                    //     if (number == null){
+                    //         number = "null"
+                    //     }
+                    //     if(abstracts ==null){
+                    //         abstracts = "null"
+                    //     }
+                    //     if(standard ==null){
+                    //         standard = "null"
+                    //     }
+                    // }
 
                     var title_option = "<h3>"+standard+"</h3>"
                     detail_title.append(title_option)
@@ -144,7 +145,7 @@ $(document).ready(function () {
                         "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+abstracts+"</td>\n" +
                         "                </tr>\n" +
                         "                </tbody>";
-                    if(language=="english"){
+                    if(language==="english"){
                         option = " <tbody>\n" +
                             "\n" +
                             "                <tr>\n" +

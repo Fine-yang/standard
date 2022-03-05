@@ -12,8 +12,8 @@ $(document).ready(function () {
         var ca = document.cookie.split(';');
         for(var i=0; i<ca.length; i++) {
             var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1);
-            if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+            while (c.charAt(0)===' ') c = c.substring(1);
+            if (c.indexOf(name) !== -1) return c.substring(name.length, c.length);
         }
         return "";
     }
@@ -34,10 +34,10 @@ $(document).ready(function () {
         // $("#title-en").html(function (){
         //     return "“一带一路”工业清洁生产指标体系与标准数据平台"
         // })
-        if (lang != "chinese" && lang !="english"){
+        if (lang !== "chinese" && lang !=="english"){
             setCookie("language", "english", 7);
         }
-        if (lang == "chinese") {
+        if (lang === "chinese") {
             $("#page-title").html("“一带一路”工业清洁生产指标体系与标准数据平台");
             $("#population").html("人口");
             $("#standard").html("标准");
@@ -59,8 +59,8 @@ $(document).ready(function () {
     function getList(language){
         console.log(language)
         var url="/getList";
-        if(language=="english"){
-            url="/getList";
+        if(language==="english"){
+            url="/getEngList";
         }
         // console.log(language)
         $.ajax({
@@ -84,13 +84,13 @@ $(document).ready(function () {
                     var standard = item["standard"];
                     if (number == null){
                         number = "无"
-                        if (language=="english"){
+                        if (language==="english"){
                             number = "null"
                         }
                     }
                     if(standard ==null){
                         standard = "暂未命名"
-                        if (language=="english"){
+                        if (language==="english"){
                             // console.log("in if:"+language)
                             standard="null"
                         }
@@ -109,10 +109,10 @@ $(document).ready(function () {
                         "                    <span class=\"label label-info\">范围:    "+scope+"</span>\n" +
                         "         </dl>"+
                         "         <hr class=\"simple\" color=\"#6f5499\" />"
-                    if(language=="english"){
+                    if(language==="english"){
                         option = "<dl class=\"list-group\"  style='margin-bottom: 3%'>\n" +
                             "                    <dt style='margin-bottom: 2%' >\n" +
-                            "                        <a class=\"standard-title\" href=\""+"/detail/"+detail_id+"\" target='_blank'>\n" +
+                            "                        <a class=\"standard-title\" href=\""+"/detailEng/"+detail_id+"\" target='_blank'>\n" +
                             "                        <h4 class=\"list-group-item-heading\" >"+ standard +"</h4>\n" +
                             "                        </a>\n" +
                             "                    </dt>\n" +
