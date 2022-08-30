@@ -13,6 +13,8 @@ public class StandardVO implements Serializable {
     private String link;
     private int scope;
     private int year;
+    private String filename;
+    private String filedir;
 
     public int getDetail_id() {
         return detail_id;
@@ -92,5 +94,21 @@ public class StandardVO implements Serializable {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public String getFilename() {
+        return  filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFiledir() {
+        return  filedir;
+    }
+
+    public void setFiledir(String filedir) {
+        this.filedir = filedir;
     }
 }

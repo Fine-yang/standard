@@ -12,9 +12,11 @@
         <result column="link" jdbcType="VARCHAR" property="link"/>
         <result column="scope" jdbcType="INTEGER" property="scope"/>
         <result column="year" jdbcType="INTEGER" property="year"/>
+        <result column="filename" jdbcType="VARCHAR" property="filename"/>
+        <result column="filedir" jdbcType="VARCHAR" property="filedir"/>
     </resultMap>
     <sql id="Base_Column_List">
-        detail_id,industry,region,standard,number,effectiveness,abstracts,link,scope,year
+        detail_id,industry,region,standard,number,effectiveness,abstracts,link,scope,year,filename,filedir
     </sql>
 <!--    <select id="getStandardList" resultMap="BaseResultMap">-->
 <!--        select-->

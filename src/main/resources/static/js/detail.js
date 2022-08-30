@@ -61,6 +61,8 @@ $(document).ready(function () {
         getDetail(lang)
     })
 
+
+
     function getDetail(language){
         var url= "/getDetail/"
         if(language==="english"){
@@ -88,7 +90,10 @@ $(document).ready(function () {
                     var abstracts = item["abstracts"];
                     var year = item["year"]
                     var link = item["link"]
-
+                    var filename = item["filename"]
+                    var filedir = item["filedir"]
+                    standard = standard.replace('《','')
+                    standard = standard.replace('》','')
                     if (number == null){
                         number = (language==="english")?"null":"无";
                     }
@@ -112,6 +117,10 @@ $(document).ready(function () {
 
                     var title_option = "<h3>"+standard+"</h3>"
                     detail_title.append(title_option)
+                    var download_url = "<a onclick='readPDF(this)' type='"+filedir+"/"+detail_id+"/"+standard+"'>"+standard+".pdf</a> <button style='border: none; background-color: white' onclick='downloadPDF(this)' value='"+filedir+"/"+detail_id+"/"+standard+"'>下载</button>"
+                    if (filename == null) {
+                        download_url = '暂无文件'
+                    }
                     var option = " <tbody>\n" +
                         "\n" +
                         "                <tr>\n" +
@@ -134,15 +143,19 @@ $(document).ready(function () {
                         "                </tr>\n" +
                         "                <tr>\n" +
                         "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">标准名称：</td>\n" +
-                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+standard+"</td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+standard+"</td>\n" +
                         "                </tr>\n" +
                         "                <tr>\n" +
                         "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">链接：</td>\n" +
-                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\"><a href='"+link+"'>"+link+"</a></td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\"><a href='"+link+"'>"+link+"</a></td>\n" +
                         "                </tr>\n" +
                         "                <tr>\n" +
                         "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">主要内容：</td>\n" +
-                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+abstracts+"</td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+abstracts+"</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">文件链接：</td>\n" +
+                        "                    <td colspan='3' id='file"+detail_id+ "' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+download_url+"</td>\n" +
                         "                </tr>\n" +
                         "                </tbody>";
                     if(language==="english"){
@@ -168,15 +181,15 @@ $(document).ready(function () {
                             "                </tr>\n" +
                             "                <tr>\n" +
                             "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Standard：</td>\n" +
-                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+standard+"</td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+standard+"</td>\n" +
                             "                </tr>\n" +
                             "                <tr>\n" +
                             "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Link：</td>\n" +
-                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\"><a href='"+link+"'>"+link+"</a></td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\"><a href='"+link+"'>"+link+"</a></td>\n" +
                             "                </tr>\n" +
                             "                <tr>\n" +
                             "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Abstracts：</td>\n" +
-                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+abstracts+"</td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+abstracts+"</td>\n" +
                             "                </tr>\n" +
                             "                </tbody>";
                     }

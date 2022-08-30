@@ -5,9 +5,14 @@ import com.example.demo.service.StandardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -34,4 +39,36 @@ public class StandardController {
         return "detail";
     }
 
+    @GetMapping({"preview/{filedir}/{id}/{filename}"})
+    @ResponseBody
+    public void showPDFFile(@PathVariable("id") String id,@PathVariable("filename") String filename, @PathVariable("filedir") String filedir, HttpServletResponse response) {
+//        File file = new File("D:\\原文件汇总\\原文件汇总\\标准数据库—纺织行业—标准原件\\《1+清洁生产标准 纺织业（棉印染）》.pdf");
+        File file = new File("src\\main\\resources\\static\\sourceFiles\\"+filedir+"\\《"+id+"+"+filename+"》.pdf");
+        System.out.println(filedir);
+        System.out.println(filename);
+        if (file.exists()) {
+            System.out.println(file.getAbsolutePath());
+            System.out.println(filename);
+            byte[] data = null;
+            FileInputStream input = null;
+            try {
+                input = new FileInputStream(file);
+                data = new byte[input.available()];
+                input.read(data);
+                response.getOutputStream().write(data);
+            } catch (Exception e) {
+                System.out.println("pdf 文件处理异常: " +e);
+            }finally {
+                try {
+                    if (input != null) {
+                        input.close();
+                    }
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }else {
+            System.out.println(file.getAbsolutePath());
+        }
+    }
 }
