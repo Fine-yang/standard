@@ -71,13 +71,13 @@
                     </li>
 <!--                    <li ><a  id="change-lang" >Chan</a></li>-->
                 </ul>
-                <form class="navbar-form navbar-right">
+                <div class="navbar-form navbar-right">
 <!--                    <button id="chang-bg" class="btn" >Change background</button>-->
                     <div class="form-group">
                         <input id="search-filed" type="text" class="form-control" placeholder="Search...">
                     </div>
-                    <button id="search"  type="submit" class="btn btn-default">Search</button>
-                </form>
+                    <button id="search"  class="btn btn-default">Search</button>
+                </div>
 
             </div>
         </div>
@@ -89,11 +89,20 @@
             }else {$(".navbar-fixed-top").removeClass("top-nav");}
         })</script>
 
-    <div class="panel  panel-success" style="margin-left: 20%; margin-right: 20%; width: 60%; position: absolute ; top: 30%">
+    <div class="panel  panel-success" style="margin-left: 10%; margin-right: 10%; width: 80%; position: absolute ; top: 30%">
 
-        <div class="panel-heading" >
+        <div class="panel-heading">
+            <div>
+                <label id="industry_label" style="margin-left: 10px">Industry: </label>
+                <select id="industry" class="selectpicker" ></select>
+                <label id="region_label" style="margin-left: 10px">Region: </label>
+                <select id="region" class="selectpicker" ></select>
+                <label id="effect_label" style="margin-left: 10px">Effectiveness: </label>
+                <select id="effectiveness" class="selectpicker"></select>
+                <button id="filter_btn"  style="margin-left: 15px">筛选</button>
+            </div>
 
-            <h3 id="panel-title"><div class="glyphicon glyphicon-flag"></div>  Paper Industry Standard</h3>
+
         </div>
 
         <div class="panel-body"  >

@@ -13,6 +13,12 @@
         <result column="scope" jdbcType="INTEGER" property="scope"/>
 <!--        <result column="year" jdbcType="year" property="year"/>-->
     </resultMap>
+<!--    <parameterMap id="FilterMap" type="String">-->
+<!--        <parameter property="industry" />-->
+<!--        <parameter property="region" />-->
+<!--        <parameter property="effectiveness" />-->
+
+<!--    </parameterMap>-->
     <sql id="Base_Column_List">
         detail_id,industry,region,standard,number,effectiveness,scope
     </sql>
@@ -20,6 +26,37 @@
         select
         <include refid="Base_Column_List"/>
         from detail
+    </select>
+    <select id="getAllRegion" resultType="String">
+        select region from detail group by region
+    </select>
+
+    <select id="getAllIndustry" resultType="String">
+        select industry from detail group by industry
+    </select>
+
+    <select id="filterByParams"  parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from detail
+        <where>
+            true
+            <if test="region!=null">
+                and region=#{region}
+            </if>
+            <if test="industry!=null">
+                and industry=#{industry}
+            </if>
+            <if test="effectiveness!=null">
+                and effectiveness=#{effectiveness}
+            </if>
+        </where>
+    </select>
+
+    <select id="searchByKeyword" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from detail where industry like #{keyword} or region like #{keyword} or standard like #{keyword}
     </select>
 
 </mapper>

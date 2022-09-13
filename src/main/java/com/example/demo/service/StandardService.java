@@ -32,4 +32,27 @@ public class StandardService {
         return standardVOList;
     }
 
+    public List<StandardVO> filterByParams(String industry, String region, String effectiveness){
+        List<Standard> standardList=standardListMapper.filterByParams(industry, region, effectiveness);
+        List<StandardVO> standardVOList=new ArrayList<>();
+        standardVOList= BeanUtil.copyList(standardList,StandardVO.class);
+        return standardVOList;
+    }
+
+    public List<StandardVO> searchByKeyword(String keyword){
+        List<Standard> standardList=standardListMapper.searchByKeyword(keyword);
+        List<StandardVO> standardVOList=new ArrayList<>();
+        standardVOList= BeanUtil.copyList(standardList,StandardVO.class);
+        return standardVOList;
+    }
+
+    public List<String> getAllIndustry() {
+        List<String> industryList = standardListMapper.getAllIndustry();
+        return industryList;
+    }
+
+    public List<String> getAllRegion() {
+        List<String> regionList = standardListMapper.getAllRegion();
+        return regionList;
+    }
 }

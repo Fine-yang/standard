@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.controller.vo.StandardVO;
 import com.example.demo.service.StandardService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class StandardController {
@@ -37,6 +35,40 @@ public class StandardController {
     public String detail(@PathVariable("id") int id){
         System.out.println(id);
         return "detail";
+    }
+
+    @GetMapping({"/getAllIndustry"})
+    @ResponseBody
+    public List<String> getAllIndustry() {
+        List<String> instList = standardService.getAllIndustry();
+        System.out.println(instList);
+        return instList;
+    }
+
+    @GetMapping({"/getAllRegion"})
+    @ResponseBody
+    public List<String> getAllRegion() {
+        return standardService.getAllRegion();
+    }
+
+    @GetMapping({"/filter"})
+    @ResponseBody
+    public List<StandardVO> filterByParams(@RequestParam Map<String, String> params) {
+        System.out.println(params);
+        String region = params.get("region");
+        String industry = params.get("industry");
+        String effectiveness = params.get("effectiveness");
+        System.out.println(params.get("region"));
+        return standardService.filterByParams(industry, region, effectiveness);
+    }
+
+    @GetMapping({"/search"})
+    @ResponseBody
+    public List<StandardVO> search(@RequestParam Map<String, String> params) {
+        String keyword = params.get("keyword");
+        keyword = "%"+keyword+"%";
+        System.out.println(params);
+        return standardService.searchByKeyword(keyword);
     }
 
     @GetMapping({"preview/{filedir}/{id}/{filename}"})
