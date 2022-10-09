@@ -15,7 +15,7 @@ $(document).ready(function () {
             while (c.charAt(0)===' ') c = c.substring(1);
             if (c.indexOf(name) !== -1) return c.substring(name.length, c.length);
         }
-        return "";
+        return "english";
     }
 
     $(function () {
@@ -50,8 +50,9 @@ $(document).ready(function () {
             $("#chinese").html("中文");
             $("#english").html("英文")
             $("#industry_label").html("行业：")
-            $("#region_label").html("国家：")
+            $("#region_label").html("国家地区：")
             $("#effect_label").html("是否现行：")
+            $("#filter_btn").html("筛选")
 
         }
         getAllRegion(lang)
@@ -63,7 +64,7 @@ $(document).ready(function () {
             searchByKeyword(keyword)
         })
         $("#filter_btn").click(function () {
-            filter()
+            filter(lang)
         })
         getList(lang)
     })
@@ -84,7 +85,7 @@ $(document).ready(function () {
         })
     }
 
-    function filter(){
+    function filter(language){
         var industry = $("#industry option:selected").text()
         var region = $("#region option:selected").text()
         var effectiveness = $("#effectiveness option:selected").text()
@@ -102,6 +103,9 @@ $(document).ready(function () {
             data["effectiveness"] = effectiveness
         }
         var url = "/filter"
+        if (language=="english") {
+            url = "/filterEng"
+        }
         $.ajax({
             url: url,
             type: 'get',
@@ -118,7 +122,7 @@ $(document).ready(function () {
         console.log(language)
         var url = "/getAllIndustry"
         if(language==="english"){
-            url="/getAllIndustry";
+            url="/getAllIndustryEng";
         }
         $.ajax({
             url: url,
@@ -143,7 +147,7 @@ $(document).ready(function () {
         console.log(language)
         var url = "/getAllRegion"
         if(language==="english"){
-            url="/getAllRegion";
+            url="/getAllRegionEng";
         }
         $.ajax({
             url: url,
@@ -183,10 +187,15 @@ $(document).ready(function () {
     function constructList(returnValue) {
         var arr = returnValue ;
         // console.log(arr)
+        var language = getCookie("language")
         // console.log(language)
         $("#standard-list").html("");
         $.each(arr, function(i, item) {
+            console.log(item)
             var detail_id = item["detail_id"];
+            if (language=="english") {
+                detail_id = item["detailEng_id"]
+            }
             var industry = item["industry"];
             var region = item["region"];
             var number = item["number"];
@@ -214,7 +223,7 @@ $(document).ready(function () {
                 "                        </a>\n" +
                 "                    </dt>\n" +
                 "                    <span class=\"label label-default\">行业:    "+ industry +"</span>\n" +
-                "                    <span class=\"label label-info\">国家:    "+ region +"</span>\n" +
+                "                    <span class=\"label label-info\">国家地区:    "+ region +"</span>\n" +
                 "                    <span class=\"label label-info\">标准号:    "+ number +"</span>\n" +
                 "                    <span class=\"label label-info\">是否现行:    "+effectiveness+"</span>\n" +
                 // "                    <span class=\"label label-info\">范围:    "+scope+"</span>\n" +
@@ -228,7 +237,7 @@ $(document).ready(function () {
                     "                        </a>\n" +
                     "                    </dt>\n" +
                     "                    <span class=\"label label-default\">Industry:    "+ industry +"</span>\n" +
-                    "                    <span class=\"label label-info\">Region:    "+ region +"</span>\n" +
+                    "                    <span class=\"label label-info\">Country/Region:    "+ region +"</span>\n" +
                     "                    <span class=\"label label-info\">Number:    "+ number +"</span>\n" +
                     "                    <span class=\"label label-info\">Effectiveness:    "+effectiveness+"</span>\n" +
                     // "                    <span class=\"label label-info\">Scope:    "+scope+"</span>\n" +

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.StandardDetailEngMapper">
     <resultMap id="BaseResultMap" type="com.example.demo.entity.StandardEng">
-        <id column="detail_id" jdbcType="INTEGER" property="detail_id"/>
+        <id column="detailEng_id" jdbcType="INTEGER" property="detailEng_id"/>
         <result column="industry" jdbcType="VARCHAR" property="industry"/>
         <result column="region" jdbcType="VARCHAR" property="region"/>
         <result column="standard" jdbcType="VARCHAR" property="standard"/>
@@ -12,9 +12,11 @@
         <result column="link" jdbcType="VARCHAR" property="link"/>
         <result column="scope" jdbcType="INTEGER" property="scope"/>
         <result column="year" jdbcType="INTEGER" property="year"/>
+        <result column="filename" jdbcType="VARCHAR" property="filename"/>
+        <result column="filedir" jdbcType="VARCHAR" property="filedir"/>
     </resultMap>
     <sql id="Base_Column_List">
-        detail_id,industry,region,standard,number,effectiveness,abstracts,link,scope,year
+        detailEng_id,industry,region,standard,number,effectiveness,abstracts,link,scope,year,filename,filedir
     </sql>
 <!--    <select id="getStandardList" resultMap="BaseResultMap">-->
 <!--        select-->
@@ -25,7 +27,7 @@
         select
         <include refid="Base_Column_List"/>
         from detailEng
-        where detail_id=#{detail_id,jdbcType=INTEGER}
+        where detailEng_id=#{detail_id,jdbcType=INTEGER}
     </select>
 
 </mapper>

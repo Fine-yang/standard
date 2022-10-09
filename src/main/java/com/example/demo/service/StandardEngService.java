@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.controller.vo.StandardEngVO;
+import com.example.demo.controller.vo.StandardVO;
 import com.example.demo.dao.StandardDetailEngMapper;
 import com.example.demo.dao.StandardListEngMapper;
 import com.example.demo.entity.Standard;
@@ -32,4 +33,22 @@ public class StandardEngService {
         standardEngVOList= BeanUtil.copyList(standardEngList,StandardEngVO.class);
         return standardEngVOList;
     }
+
+    public List<String> getAllIndustryEng() {
+        List<String> industryList = standardListEngMapper.getAllIndustryEng();
+        return industryList;
+    }
+
+    public List<String> getAllRegionEng() {
+        List<String> regionList = standardListEngMapper.getAllRegionEng();
+        return regionList;
+    }
+
+    public List<StandardEngVO> filterByParamsEng(String industry, String region, String effectiveness){
+        List<StandardEng> standardList=standardListEngMapper.filterByParamsEng(industry, region, effectiveness);
+        List<StandardEngVO> standardVOList=new ArrayList<>();
+        standardVOList= BeanUtil.copyList(standardList,StandardEngVO.class);
+        return standardVOList;
+    }
+
 }

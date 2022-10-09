@@ -1,15 +1,18 @@
 package com.example.demo.controller;
 
 import com.example.demo.controller.vo.StandardEngVO;
+import com.example.demo.controller.vo.StandardVO;
 import com.example.demo.service.StandardEngService;
 import com.example.demo.service.StandardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class StandardEngController {
@@ -32,5 +35,30 @@ public class StandardEngController {
     public String detailEng(@PathVariable("id") int id){
         System.out.println(id);
         return "detail";
+    }
+
+    @GetMapping({"/getAllIndustryEng"})
+    @ResponseBody
+    public List<String> getAllIndustryEng() {
+        List<String> instList = standardEngService.getAllIndustryEng();
+        System.out.println(instList);
+        return instList;
+    }
+
+    @GetMapping({"/getAllRegionEng"})
+    @ResponseBody
+    public List<String> getAllRegionEng() {
+        return standardEngService.getAllRegionEng();
+    }
+
+    @GetMapping({"/filterEng"})
+    @ResponseBody
+    public List<StandardEngVO> filterByParams(@RequestParam Map<String, String> params) {
+        System.out.println(params);
+        String region = params.get("region");
+        String industry = params.get("industry");
+        String effectiveness = params.get("effectiveness");
+        System.out.println(params.get("region"));
+        return standardEngService.filterByParamsEng(industry, region, effectiveness);
     }
 }

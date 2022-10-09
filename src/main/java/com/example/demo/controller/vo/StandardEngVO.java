@@ -3,7 +3,7 @@ package com.example.demo.controller.vo;
 import java.io.Serializable;
 
 public class StandardEngVO implements Serializable {
-    private int detail_id;
+    private int detailEng_id;
     private String industry;
     private String region;
     private String standard;
@@ -13,13 +13,15 @@ public class StandardEngVO implements Serializable {
     private String link;
     private int scope;
     private int year;
+    private String filename;
+    private String filedir;
 
-    public int getDetail_id() {
-        return detail_id;
+    public int getDetailEng_id() {
+        return detailEng_id;
     }
 
-    public void setDetail_id(int detail_id) {
-        this.detail_id = detail_id;
+    public void setDetailEng_id(int detailEng_id) {
+        this.detailEng_id = detailEng_id;
     }
 
     public String getIndustry() {
@@ -92,5 +94,21 @@ public class StandardEngVO implements Serializable {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public String getFilename() {
+        return  filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFiledir() {
+        return  filedir;
+    }
+
+    public void setFiledir(String filedir) {
+        this.filedir = filedir;
     }
 }

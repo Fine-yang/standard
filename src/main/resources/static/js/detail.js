@@ -191,6 +191,10 @@ $(document).ready(function () {
                             "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Abstracts：</td>\n" +
                             "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+abstracts+"</td>\n" +
                             "                </tr>\n" +
+                            "                <tr>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">File：</td>\n" +
+                            "                    <td colspan='3' id='file"+detail_id+ "' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+download_url+"</td>\n" +
+                            "                </tr>\n" +
                             "                </tbody>";
                     }
                     detail_table.append(option)

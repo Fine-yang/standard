@@ -26,6 +26,10 @@
         /*#chinese:hover  {color:#45bcf9 !important;background:transparent;outline:0}*/
         /*#english:hover  {color:#45bcf9 !important;background:transparent;outline:0}*/
         .top-nav {padding:0;background:#343a40; opacity: 80%;}
+        /*select {width: 210px; height: 50px; font-size: large}*/
+        select {
+            font-size: 50px !important;
+        }
         button.navbar-toggle {background-color:#fbfbfb;}/*整个背景都是transparent透明的，会看不到，所以再次覆盖一下*/
         button.navbar-toggle > span.icon-bar {background-color:#dedede}
     </style>
@@ -89,19 +93,18 @@
             }else {$(".navbar-fixed-top").removeClass("top-nav");}
         })</script>
 
-    <div class="panel  panel-success" style="margin-left: 10%; margin-right: 10%; width: 80%; position: absolute ; top: 30%">
+    <div class="panel  panel-success" style="margin-left: 10%; margin-right: 10%; width: 80%; position: absolute ; top: 20%">
 
         <div class="panel-heading">
-            <div>
+            <div style="margin-left: 10%; width: 80%;">
                 <label id="industry_label" style="margin-left: 10px">Industry: </label>
                 <select id="industry" class="selectpicker" ></select>
-                <label id="region_label" style="margin-left: 10px">Region: </label>
+                <label id="region_label" style="margin-left: 10px">Country/Region: </label>
                 <select id="region" class="selectpicker" ></select>
                 <label id="effect_label" style="margin-left: 10px">Effectiveness: </label>
                 <select id="effectiveness" class="selectpicker"></select>
-                <button id="filter_btn"  style="margin-left: 15px">筛选</button>
+                <button id="filter_btn"  style="margin-left: 15px">filter</button>
             </div>
-
 
         </div>
 
@@ -135,7 +138,7 @@
 <!--                </form>-->
 
 <!--            </div>-->
-            <div id="standard-list" style="margin-top: 5% ;margin-left: 10%; margin-right: 10%;  "  >
+            <div id="standard-list" style="margin-top: 1% ;margin-left: 10%; margin-right: 10%;  "  >
             </div>
 
         </div>

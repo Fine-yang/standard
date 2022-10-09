@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.StandardListEngMapper">
     <resultMap id="BaseResultMap" type="com.example.demo.entity.StandardEng">
-        <id column="detail_id" jdbcType="INTEGER" property="detail_id"/>
+        <id column="detailEng_id" jdbcType="INTEGER" property="detailEng_id"/>
         <result column="industry" jdbcType="VARCHAR" property="industry"/>
         <result column="region" jdbcType="VARCHAR" property="region"/>
         <result column="standard" jdbcType="VARCHAR" property="standard"/>
@@ -12,14 +12,41 @@
 <!--        <result column="link" jdbcType="VARCHAR" property="link"/>-->
         <result column="scope" jdbcType="INTEGER" property="scope"/>
 <!--        <result column="year" jdbcType="year" property="year"/>-->
+<!--        <result column="filename" jdbcType="VARCHAR" property="filename"/>-->
+<!--        <result column="filedir" jdbcType="VARCHAR" property="filedir"/>-->
     </resultMap>
     <sql id="Base_Column_List">
-        detail_id,industry,region,standard,number,effectiveness,scope
+        detailEng_id,industry,region,standard,number,effectiveness,scope
     </sql>
     <select id="selectStandardEngList" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from detailEng
     </select>
+    <select id="getAllRegionEng" resultType="String">
+        select region from detailEng group by region
+    </select>
 
+    <select id="getAllIndustryEng" resultType="String">
+        select industry from detailEng group by industry
+    </select>
+
+
+    <select id="filterByParamsEng"  parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from detailEng
+        <where>
+            true
+            <if test="region!=null">
+                and region=#{region}
+            </if>
+            <if test="industry!=null">
+                and industry=#{industry}
+            </if>
+            <if test="effectiveness!=null">
+                and effectiveness=#{effectiveness}
+            </if>
+        </where>
+    </select>
 </mapper>
