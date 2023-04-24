@@ -226,10 +226,12 @@ $(document).ready(function () {
                 "                        <h4 class=\"list-group-item-heading\" >"+ standard +"</h4>\n" +
                 "                        </a>\n" +
                 "                    </dt>\n" +
-                "                    <span class=\"label label-default\">行业:    "+ industry +"</span>\n" +
+
                 "                    <span class=\"label label-info\">国家地区:    "+ region +"</span>\n" +
-                "                    <span class=\"label label-info\">标准号:    "+ number +"</span>\n" +
-                "                    <span class=\"label label-info\">是否现行:    "+effectiveness+"</span>\n" +
+                "                    <span class=\"label label-default\">需求行业:    "+ industry +"</span>\n" +
+                "                    <span class=\"label label-info\">需求阶段:    "+ number +"</span>\n" +
+                "                    <span class=\"label label-info\">需求技术识别:    "+effectiveness+"</span>\n" +
+                "                    <span class=\"label label-info\">具体技术:    "+effectiveness+"</span>\n" +
                 "                    <h3><span  class=\"label label-success\">标签:    "+scope+"</span></h3>\n" +
                 "         </dl>"+
                 "         <hr class=\"simple\" color=\"#6f5499\" />"
@@ -240,10 +242,12 @@ $(document).ready(function () {
                     "                        <h4 class=\"list-group-item-heading\" >"+ standard +"</h4>\n" +
                     "                        </a>\n" +
                     "                    </dt>\n" +
-                    "                    <span class=\"label label-default\">Industry:    "+ industry +"</span>\n" +
                     "                    <span class=\"label label-info\">Country/Region:    "+ region +"</span>\n" +
-                    "                    <span class=\"label label-info\">Number:    "+ number +"</span>\n" +
-                    "                    <span class=\"label label-info\">Effectiveness:    "+effectiveness+"</span>\n" +
+                    "                    <span class=\"label label-default\">Industry:    "+ industry +"</span>\n" +
+
+                    "                    <span class=\"label label-info\">Production Stage:    "+ number +"</span>\n" +
+                    "                    <span class=\"label label-info\">Technology   Categories:    "+effectiveness+"</span>\n" +
+                    "                    <span class=\"label label-info\">Technology:    "+ number +"</span>\n" +
                     // "                    <span class=\"label label-info\">Scope:    "+scope+"</span>\n" +
                     "         </dl>"+
                     "         <hr class=\"simple\" color=\"#6f5499\" />"

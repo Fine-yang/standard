@@ -42,7 +42,7 @@ $(document).ready(function () {
         }
 
         if (lang === "chinese") {
-            $("#page-title").html("“一带一路”工业清洁生产指标体系与标准数据平台");
+            $("#page-title").html("“一带一路”重污染行业清洁生产技术清单数据平台");
             $("#population").html("人口");
             $("#standard").html("标准");
             $("#others").html("其他");

@@ -61,4 +61,13 @@ public class StandardEngController {
         System.out.println(params.get("region"));
         return standardEngService.filterByParamsEng(industry, region, effectiveness);
     }
+
+    @GetMapping({"/searchEng"})
+    @ResponseBody
+    public List<StandardEngVO> search(@RequestParam Map<String, String> params) {
+        String keyword = params.get("keyword");
+        keyword = "%"+keyword+"%";
+        System.out.println(params);
+        return standardEngService.searchByKeywordEng(keyword);
+    }
 }

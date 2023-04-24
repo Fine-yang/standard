@@ -14,4 +14,5 @@ public interface StandardListEngMapper {
     List<String> getAllIndustryEng();
     List<String> getAllRegionEng();
     List<StandardEng> filterByParamsEng(@Param("industry")String industry, @Param("region")String region, @Param("effectiveness")String effectiveness);
+    List<StandardEng> searchByKeywordEng(@Param("keyword")String keyword);
 }

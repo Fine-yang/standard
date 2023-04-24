@@ -51,4 +51,10 @@ public class StandardEngService {
         return standardVOList;
     }
 
+    public List<StandardEngVO> searchByKeywordEng(String keyword){
+        List<StandardEng> standardList=standardListEngMapper.searchByKeywordEng(keyword);
+        List<StandardEngVO> standardVOList = new ArrayList<>();
+        standardVOList= BeanUtil.copyList(standardList,StandardEngVO.class);
+        return standardVOList;
+    }
 }

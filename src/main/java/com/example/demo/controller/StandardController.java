@@ -37,6 +37,26 @@ public class StandardController {
         return "detail";
     }
 
+    @GetMapping("tech")
+    public String tech(){
+        return "tech";
+    }
+
+    @GetMapping("tech_detail/{id}")
+    public String techDetail(@PathVariable("id") int id){
+        return "tech_detail";
+    }
+
+    @GetMapping("demand")
+    public String demand(){
+        return "demand";
+    }
+
+    @GetMapping("demand_detail/{id}")
+    public String demandDetail(@PathVariable("id") int id){
+        return "demand_detail";
+    }
+
     @GetMapping({"/getAllIndustry"})
     @ResponseBody
     public List<String> getAllIndustry() {

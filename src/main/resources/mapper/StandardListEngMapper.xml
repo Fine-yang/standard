@@ -49,4 +49,11 @@
             </if>
         </where>
     </select>
+
+    <select id="searchByKeywordEng" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from detailEng where industry like #{keyword} or region like #{keyword} or standard like #{keyword}
+    </select>
+
 </mapper>

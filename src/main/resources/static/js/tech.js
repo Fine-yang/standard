@@ -37,7 +37,7 @@ $(document).ready(function () {
             setCookie("language", "english", 7);
         }
         if (lang === "chinese") {
-            $("#page-title").html("“一带一路”工业清洁生产指标体系与标准数据平台");
+            $("#page-title").html("“一带一路”重污染行业清洁生产技术清单数据平台");
             $("#population").html("人口");
             $("#standard").html("标准");
             $("#others").html("其他");
@@ -222,14 +222,17 @@ $(document).ready(function () {
 
             var option = "<dl class=\"list-group\"  style='margin-bottom: 3%'>\n" +
                 "                    <dt style='margin-bottom: 2%' >\n" +
-                "                        <a class=\"standard-title\" href=\""+"/detail/"+detail_id+"\" target='_blank'>\n" +
+                "                        <a class=\"standard-title\" href=\""+"/tech_detail/"+detail_id+"\" target='_blank'>\n" +
                 "                        <h4 class=\"list-group-item-heading\" >"+ standard +"</h4>\n" +
                 "                        </a>\n" +
                 "                    </dt>\n" +
+                "                    <span class=\"label label-info\">编号:    "+ region +"</span>\n" +
+                "                    <span class=\"label label-info\">国家:    "+ region +"</span>\n" +
+
                 "                    <span class=\"label label-default\">行业:    "+ industry +"</span>\n" +
-                "                    <span class=\"label label-info\">国家地区:    "+ region +"</span>\n" +
-                "                    <span class=\"label label-info\">标准号:    "+ number +"</span>\n" +
-                "                    <span class=\"label label-info\">是否现行:    "+effectiveness+"</span>\n" +
+                "                    <span class=\"label label-info\">技术名称:    "+ region +"</span>\n" +
+                "                    <span class=\"label label-info\">阶段:    "+ number +"</span>\n" +
+                "                    <span class=\"label label-info\">面向领域:    "+effectiveness+"</span>\n" +
                 "                    <h3><span  class=\"label label-success\">标签:    "+scope+"</span></h3>\n" +
                 "         </dl>"+
                 "         <hr class=\"simple\" color=\"#6f5499\" />"
@@ -240,10 +243,14 @@ $(document).ready(function () {
                     "                        <h4 class=\"list-group-item-heading\" >"+ standard +"</h4>\n" +
                     "                        </a>\n" +
                     "                    </dt>\n" +
+                    "                    <span class=\"label label-info\">No.:    "+ region +"</span>\n" +
+                    "                    <span class=\"label label-info\">Country:    "+ region +"</span>\n" +
+
                     "                    <span class=\"label label-default\">Industry:    "+ industry +"</span>\n" +
-                    "                    <span class=\"label label-info\">Country/Region:    "+ region +"</span>\n" +
-                    "                    <span class=\"label label-info\">Number:    "+ number +"</span>\n" +
-                    "                    <span class=\"label label-info\">Effectiveness:    "+effectiveness+"</span>\n" +
+                    "                    <span class=\"label label-info\">CleanTechnology:    "+ region +"</span>\n" +
+                    "                    <span class=\"label label-info\">Stage:    "+ number +"</span>\n" +
+                    "                    <span class=\"label label-info\">Fileds:    "+effectiveness+"</span>\n" +
+                    "                    <h3><span  class=\"label label-success\">Highlights:    "+scope+"</span></h3>\n" +
                     // "                    <span class=\"label label-info\">Scope:    "+scope+"</span>\n" +
                     "         </dl>"+
                     "         <hr class=\"simple\" color=\"#6f5499\" />"
