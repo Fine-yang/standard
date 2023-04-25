@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.dao.TechDetailMapper">
-    <resultMap id="BaseResultMap" type="com.example.demo.entity.TechEntity">
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.TechEngEntity">
         <id column="NO" jdbcType="VARCHAR" property="NO"/>
         <result column="Country" jdbcType="VARCHAR" property="Country"/>
         <result column="Industry" jdbcType="VARCHAR" property="Industry"/>
@@ -16,19 +16,19 @@
         <result column="Stability" jdbcType="TEXT" property="Stability"/>
         <result column="Innovation" jdbcType="TEXT" property="Innovation"/>
         <result column="Source" jdbcType="TEXT" property="Source"/>
-        <result column="Comment" jdbcType="TEXT" property="Comment"/>
+<!--        <result column="Comment" jdbcType="TEXT" property="Comment"/>-->
     </resultMap>
-    <sql id="Base_Column_List">NO,Country,Industry,CleanTechnology,ProductionStage,TechnologyOverview,Effect,Fields,Highlights,TypicalApplications,Cost,Stability,Innovation,Source,Comment
+    <sql id="Base_Column_List">NO,Country,Industry,CleanTechnology,ProductionStage,TechnologyOverview,Effect,Fields,Highlights,TypicalApplications,Cost,Stability,Innovation,Source
     </sql>
 <!--    <select id="getStandardList" resultMap="BaseResultMap">-->
 <!--        select-->
 <!--        <include refid="Base_Column_List"/>-->
 <!--        from detail-->
 <!--    </select>-->
-    <select id="selectTechDetailById" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <select id="selectTechEngDetailById" parameterType="java.lang.String" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from technology.Tech
+        from technology.TechEng
         where NO=#{NO,jdbcType=VARCHAR}
     </select>
 

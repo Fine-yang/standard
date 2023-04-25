@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.TechDetailMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.TechEntity">
+        <id column="NO" jdbcType="VARCHAR" property="NO"/>
+        <result column="Country" jdbcType="VARCHAR" property="Country"/>
+        <result column="Industry" jdbcType="VARCHAR" property="Industry"/>
+        <result column="CleanTechnology" jdbcType="VARCHAR" property="CleanTechnology"/>
+        <result column="ProductionStage" jdbcType="TEXT" property="ProductionStage"/>
+<!--        <result column="TechnologyOverview" jdbcType="TEXT" property="TechnologyOverview"/>-->
+<!--        <result column="Effect" jdbcType="TEXT" property="Effect"/>-->
+        <result column="Fields" jdbcType="TEXT" property="Fields"/>
+        <result column="Highlights" jdbcType="TEXT" property="Highlights"/>
+<!--        <result column="TypicalApplications" jdbcType="TEXT" property="TypicalApplications"/>-->
+<!--        <result column="Cost" jdbcType="TEXT" property="Cost"/>-->
+<!--        <result column="Stability" jdbcType="TEXT" property="Stability"/>-->
+<!--        <result column="Innovation" jdbcType="TEXT" property="Innovation"/>-->
+<!--        <result column="Source" jdbcType="TEXT" property="Source"/>-->
+<!--        <result column="Comment" jdbcType="TEXT" property="Comment"/>-->
+    </resultMap>
+    <sql id="Base_Column_List">
+     NO,Country,Industry,CleanTechnology,ProductionStage,Fields,Highlights,
+    </sql>
+<!--    <select id="getStandardList" resultMap="BaseResultMap">-->
+<!--        select-->
+<!--        <include refid="Base_Column_List"/>-->
+<!--        from detail-->
+<!--    </select>-->
+    <select id="selectTechList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from technology.Tech
+    </select>
+
+    <select id="getAllCountry" resultType="String">
+        select Country from technology.Tech group by Country
+    </select>
+
+    <select id="getAllIndustry" resultType="String">
+        select Industry from technology.Tech group by Industry
+    </select>
+
+    <select id="getAllProductionStage" resultType="String">
+    select ProductionStage from technology.Tech group by ProductionStage
+    </select>
+
+    <select id="getAllFields" resultType="String">
+    select Fields from technology.Tech group by Fields
+    </select>
+
+    <select id="searchByKeyword" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from technology.Tech where Industry like #{keyword} or Country like #{keyword} or Highlights like #{keyword} or Fields like #{keyword} or TechnologyOverview like #{keyword} or TypicalApplications like #{keyword}
+    </select>
+
+    <select id="filterByParams"  parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from technology.Tech
+        <where>
+            true
+            <if test="country!=null">
+                and Country=#{country}
+            </if>
+            <if test="industry!=null">
+                and Industry=#{industry}
+            </if>
+            <if test="productionStage!=null">
+                and ProductionStage=#{productionStage}
+            </if>
+            <if test="fields!=null">
+                and Fields=#{fields}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>
