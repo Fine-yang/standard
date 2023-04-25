@@ -28,29 +28,24 @@ public class TechController {
         return techService.getTechList();
     }
 
-    @GetMapping({"getDetail/{NO}"})
+    @GetMapping("tech")
+    public String tech(){
+        return "tech";
+    }
+
+    @GetMapping({"tech_detail/{NO}"})
     @ResponseBody
     public List<TechEntityVO> getDetail(@PathVariable("NO") String NO){
         System.out.println(NO);
         return techService.getTechDetailById(NO);
     }
-    @GetMapping({"detail/{NO}"})
+    @GetMapping({"tech_detail/{NO}"})
     public String detail(@PathVariable("NO") String NO){
         System.out.println(NO);
-        return "detail";
+        return "tech_detail";
     }
 
-    //忘记什么作用了，先注释掉
-//    @GetMapping("tech")
-//    public String tech(){
-//        return "tech";
-//    }
-//
-//    @GetMapping("tech_detail/{id}")
-//    public String techDetail(@PathVariable("id") int id){
-//        return "tech_detail";
-//    }
-//
+
 //    @GetMapping("demand")
 //    public String demand(){
 //        return "demand";
