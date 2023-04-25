@@ -22,7 +22,7 @@ public class TechController {
     @Resource
     private TechService techService;
 
-    @GetMapping({"/getList"})
+    @GetMapping({"/getTechList"})
     @ResponseBody
     public List<TechEntityVO> getTechList(){
         return techService.getTechList();
@@ -33,7 +33,7 @@ public class TechController {
         return "tech";
     }
 
-    @GetMapping({"tech_detail/{NO}"})
+    @GetMapping({"getTechDetail/{NO}"})
     @ResponseBody
     public List<TechEntityVO> getDetail(@PathVariable("NO") String NO){
         System.out.println(NO);
@@ -57,7 +57,7 @@ public class TechController {
 //    }
 
 
-    @GetMapping({"/getAllIndustry"})
+    @GetMapping({"/getAllTechIndustry"})
     @ResponseBody
     public List<String> getAllIndustry() {
         List<String> instList = techService.getAllIndustry();
@@ -65,25 +65,25 @@ public class TechController {
         return instList;
     }
 
-    @GetMapping({"/getAllCountry"})
+    @GetMapping({"/getAllTechCountry"})
     @ResponseBody
     public List<String> getAllRegion() {
         return techService.getAllCountry();
     }
 
 
-    @GetMapping({"/getAllProductionStage"})
+    @GetMapping({"/getAllTechProductionStage"})
     @ResponseBody
     public List<String> getAllProductionStage() {
         return techService.getAllProductionStage();
     }
-    @GetMapping({"/getAllFields"})
+    @GetMapping({"/getAllTechFields"})
     @ResponseBody
     public List<String> getAllFiedls() {
         return techService.getAllFields();
     }
 
-    @GetMapping({"/filter"})
+    @GetMapping({"/techFilter"})
     @ResponseBody
     public List<TechEntityVO> filterByParams(@RequestParam Map<String, String> params) {
 //        System.out.println(params);
@@ -94,7 +94,7 @@ public class TechController {
         return techService.filterByParams(industry,country,productionStage,fields);
     }
 
-    @GetMapping({"/search"})
+    @GetMapping({"/techSearch"})
     @ResponseBody
     public List<TechEntityVO> search(@RequestParam Map<String, String> params) {
         String keyword = params.get("keyword");

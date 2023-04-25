@@ -18,28 +18,17 @@ public class TechEngController {
     @Resource
     private TechEngService techEngService;
 
-    @GetMapping({"/getEngList"})
+    @GetMapping({"/getTechEngList"})
     @ResponseBody
     public List<TechEngEntityVO> getTechEngList(){
         return techEngService.getTechEngList();
     }
 
-    @GetMapping("techEng")
-    public String techEng(){
-        return "techEng";
-    }
-
-    @GetMapping({"techEng_detail/{NO}"})
+    @GetMapping({"getTechEngDetail/{NO}"})
     @ResponseBody
     public List<TechEngEntityVO> getEngDetail(@PathVariable("NO") String NO){
         System.out.println(NO);
         return techEngService.getTechEngDetailById(NO);
-    }
-
-    @GetMapping({"techEng_detail/{NO}"})
-    public String Engdetail(@PathVariable("NO") String NO){
-        System.out.println(NO);
-        return "detail";
     }
 
 //    @GetMapping("demand")
@@ -53,7 +42,7 @@ public class TechEngController {
 //    }
 
 
-    @GetMapping({"/getAllIndustryEng"})
+    @GetMapping({"/getAllTechIndustryEng"})
     @ResponseBody
     public List<String> getAllIndustryEng() {
         List<String> instList = techEngService.getAllIndustryEng();
@@ -61,25 +50,25 @@ public class TechEngController {
         return instList;
     }
 
-    @GetMapping({"/getAllCountryEng"})
+    @GetMapping({"/getAllTechCountryEng"})
     @ResponseBody
     public List<String> getAllRegionEng() {
         return techEngService.getAllCountryEng();
     }
 
 
-    @GetMapping({"/getAllProductionStageEng"})
+    @GetMapping({"/getAllTechProductionStageEng"})
     @ResponseBody
     public List<String> getAllProductionStageEng() {
         return techEngService.getAllProductionStageEng();
     }
-    @GetMapping({"/getAllFieldsEng"})
+    @GetMapping({"/getAllTechFieldsEng"})
     @ResponseBody
     public List<String> getAllFiedlsEng() {
         return techEngService.getAllFieldsEng();
     }
 
-    @GetMapping({"/filterEng"})
+    @GetMapping({"/techFilterEng"})
     @ResponseBody
     public List<TechEngEntityVO> filterByParamsEng(@RequestParam Map<String, String> params) {
 //        System.out.println(params);
@@ -90,7 +79,7 @@ public class TechEngController {
         return techEngService.filterByParamsEng(industry,country,productionStage,fields);
     }
 
-    @GetMapping({"/searchEng"})
+    @GetMapping({"/tecgSearchEng"})
     @ResponseBody
     public List<TechEngEntityVO> searchEng(@RequestParam Map<String, String> params) {
         String keyword = params.get("keyword");

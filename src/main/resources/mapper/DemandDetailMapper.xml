@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.DemandDetailMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.entity.DemandDetail">
+        <id column="demand_id" jdbcType="INTEGER" property="demandId"/>
+        <result column="number" jdbcType="VARCHAR" property="number"/>
+        <result column="region" jdbcType="VARCHAR" property="region"/>
+        <result column="industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="stage" jdbcType="VARCHAR" property="stage"/>
+        <result column="tech_categories" jdbcType="VARCHAR" property="techCategories"/>
+        <result column="tech" jdbcType="VARCHAR" property="tech"/>
+        <result column="tech_overview" jdbcType="VARCHAR" property="techOverview"/>
+        <result column="source" jdbcType="VARCHAR" property="source"/>
+    </resultMap>
+    <!--    <parameterMap id="FilterMap" type="String">-->
+    <!--        <parameter property="industry" />-->
+    <!--        <parameter property="region" />-->
+    <!--        <parameter property="effectiveness" />-->
+
+    <!--    </parameterMap>-->
+    <sql id="Base_Column_List">
+        demand_id,number,region,industry,description,stage,tech_categories,tech,tech_overview,source
+    </sql>
+    <select id="selectDemandList" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from demand.demand_detail
+    </select>
+    <select id="getAllRegion" resultType="String">
+        select region from demand.demand_detail group by region
+    </select>
+
+    <select id="getAllIndustry" resultType="String">
+        select industry from demand.demand_detail group by industry
+    </select>
+
+    <select id="getAllStage" resultType="String">
+        select stage from demand.demand_detail group by stage
+    </select>
+
+    <select id="filterByParams"  parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from demand.demand_detail
+        <where>
+            true
+            <if test="region!=null">
+                and region=#{region}
+            </if>
+            <if test="industry!=null">
+                and industry=#{industry}
+            </if>
+            <if test="stage!=null">
+                and stage=#{stage}
+            </if>
+        </where>
+    </select>
+
+    <select id="searchByKeyword" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from demand.demand_detail where industry like #{keyword} or region like #{keyword} or stage like #{keyword}
+    </select>
+    <select id="selectDemandDetailById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from demand.demand_detail
+        where demand_id=#{demand_id,jdbcType=INTEGER}
+    </select>
+</mapper>

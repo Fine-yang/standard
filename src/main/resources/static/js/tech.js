@@ -38,8 +38,8 @@ $(document).ready(function () {
         }
         if (lang === "chinese") {
             $("#page-title").html("“一带一路”重污染行业清洁生产技术清单数据平台");
-            $("#population").html("人口");
-            $("#standard").html("标准");
+            $("#tech").html("技术清单");
+            $("#demand").html("需求清单");
             $("#others").html("其他");
             $("#search-filed").placeholder = "搜索本页";
             $("#search").html("搜索");
@@ -50,14 +50,16 @@ $(document).ready(function () {
             $("#chinese").html("中文");
             $("#english").html("英文")
             $("#industry_label").html("行业：")
-            $("#region_label").html("国家地区：")
-            $("#effect_label").html("是否现行：")
+            $("#region_label").html("国家：")
+            $("#stage_label").html("阶段：")
+            $("#fields_label").html("面向领域：")
             $("#filter_btn").html("筛选")
 
         }
         getAllRegion(lang)
         getAllIndustry(lang)
-        getEffectiveness(lang)
+        getStage(lang)
+        getFields(lang)
         $("#search").click(function () {
             var keyword = $("#search-filed").val()
             console.log(keyword)
@@ -70,10 +72,10 @@ $(document).ready(function () {
     })
 
     function searchByKeyword(keyword){
-        var url = "/search"
+        var url = "/techSearch"
         var lang = getCookie("language")
         if (lang == "english"){
-            url = "/searchEng"
+            url = "/techSearchEng"
         }
         $.ajax({
             url: url,
@@ -91,24 +93,28 @@ $(document).ready(function () {
 
     function filter(language){
         var industry = $("#industry option:selected").text()
-        var region = $("#region option:selected").text()
-        var effectiveness = $("#effectiveness option:selected").text()
+        var country = $("#region option:selected").text()
+        var stage = $("#stage option:selected").text()
+        var fields = $("#fields option:selected").text()
         console.log(industry)
-        console.log(region)
-        console.log(effectiveness)
+        console.log(country)
+        console.log(stage)
         var data = {}
         if (industry != "") {
             data["industry"] = industry
         }
-        if (region != "") {
-            data["region"] = region
+        if (country != "") {
+            data["country"] = country
         }
-        if (effectiveness != "") {
-            data["effectiveness"] = effectiveness
+        if (stage != "") {
+            data["productionStage"] = stage
         }
-        var url = "/filter"
+        if (fields != "") {
+            data["fields"] = fields
+        }
+        var url = "/techFilter"
         if (language=="english") {
-            url = "/filterEng"
+            url = "/techFilterEng"
         }
         $.ajax({
             url: url,
@@ -124,9 +130,9 @@ $(document).ready(function () {
 
     function getAllIndustry(language) {
         console.log(language)
-        var url = "/getAllIndustry"
+        var url = "/getAllTechIndustry"
         if(language==="english"){
-            url="/getAllIndustryEng";
+            url="/getAllTechIndustryEng";
         }
         $.ajax({
             url: url,
@@ -149,9 +155,9 @@ $(document).ready(function () {
 
     function getAllRegion(language) {
         console.log(language)
-        var url = "/getAllRegion"
+        var url = "/getAllTechCountry"
         if(language==="english"){
-            url="/getAllRegionEng";
+            url="/getAllTechCountryEng";
         }
         $.ajax({
             url: url,
@@ -172,101 +178,120 @@ $(document).ready(function () {
         })
     }
 
-    function getEffectiveness(language) {
+    function getStage(language) {
         console.log(language)
-        var yes = "是"
-        var no = "否"
+        var url = "/getAllTechProductionStage"
         if(language==="english"){
-            yes = "YES"
-            no = "NO"
+            url="/getAllTechProductionStageEng";
         }
-        $("#effectiveness").html("<option selected></option>");
-        $("#effectiveness").append("<option>"+yes+"</option>")
-        $("#effectiveness").append("<option>"+no+"</option>")
-        $("#effectiveness").selectpicker("refresh")
-        $("#effectiveness").selectpicker("render")
-
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'json',
+            async: true,
+            success: function (returnValue) {
+                console.log("return_value:")
+                console.log(returnValue)
+                $("#stage").html("<option selected></option>");
+                $.each(returnValue, function (i,item){
+                    var option = "<option>"+item+"</option>"
+                    $("#stage").append(option)
+                })
+                $("#stage").selectpicker("refresh")
+                $("#stage").selectpicker("render")
+            }
+        })
+    }
+    function getFields(language) {
+        console.log(language)
+        var url = "/getAllTechFields"
+        if(language==="english"){
+            url="/getAllTechFieldsEng";
+        }
+        $.ajax({
+            url: url,
+            type: 'get',
+            dataType: 'json',
+            async: true,
+            success: function (returnValue) {
+                console.log("return_value:")
+                console.log(returnValue)
+                $("#fields").html("<option selected></option>");
+                $.each(returnValue, function (i,item){
+                    var option = "<option>"+item+"</option>"
+                    $("#fields").append(option)
+                })
+                $("#fields").selectpicker("refresh")
+                $("#fields").selectpicker("render")
+            }
+        })
     }
 
     function constructList(returnValue) {
         var arr = returnValue ;
-        // console.log(arr)
+        console.log(arr)
         var language = getCookie("language")
         // console.log(language)
-        $("#standard-list").html("");
+        $("#tech-list").html("");
         $.each(arr, function(i, item) {
             console.log(item)
-            var detail_id = item["detail_id"];
-            if (language=="english") {
-                detail_id = item["detailEng_id"]
-            }
+            var no = item["no"];
+            // if (language=="english") {
+            //     detail_id = item["detailEng_id"]
+            // }
             var industry = item["industry"];
-            var region = item["region"];
-            var number = item["number"];
-            var effectiveness = item["effectiveness"]
-            var scope = item["scope"];
-            var standard = item["standard"];
-            if (number == null){
-                number = "无"
-                if (language==="english"){
-                    number = "null"
-                }
-            }
-            if(standard ==null){
-                standard = "暂未命名"
-                if (language==="english"){
-                    // console.log("in if:"+language)
-                    standard="null"
-                }
-            }
+            var country = item["country"];
+            var cleanTechnology = item["cleanTechnology"];
+            var stage = item["productionStage"]
+            var fields = item["fields"];
+            var highlights = item["highlights"];
 
             var option = "<dl class=\"list-group\"  style='margin-bottom: 3%'>\n" +
                 "                    <dt style='margin-bottom: 2%' >\n" +
-                "                        <a class=\"standard-title\" href=\""+"/tech_detail/"+detail_id+"\" target='_blank'>\n" +
-                "                        <h4 class=\"list-group-item-heading\" >"+ standard +"</h4>\n" +
+                "                        <a class=\"standard-title\" href=\""+"/tech_detail/"+no+"\" target='_blank'>\n" +
+                "                        <h4 class=\"list-group-item-heading\" >"+ cleanTechnology +"</h4>\n" +
                 "                        </a>\n" +
                 "                    </dt>\n" +
-                "                    <span class=\"label label-info\">编号:    "+ region +"</span>\n" +
-                "                    <span class=\"label label-info\">国家:    "+ region +"</span>\n" +
+                "                    <span class=\"label label-info\">编号:    "+ no +"</span>\n" +
+                "                    <span class=\"label label-info\">国家:    "+ country +"</span>\n" +
 
                 "                    <span class=\"label label-default\">行业:    "+ industry +"</span>\n" +
-                "                    <span class=\"label label-info\">技术名称:    "+ region +"</span>\n" +
-                "                    <span class=\"label label-info\">阶段:    "+ number +"</span>\n" +
-                "                    <span class=\"label label-info\">面向领域:    "+effectiveness+"</span>\n" +
-                "                    <h3><span  class=\"label label-success\">标签:    "+scope+"</span></h3>\n" +
+                // "                    <span class=\"label label-info\">技术名称:    "+ cleanTechnology +"</span>\n" +
+                "                    <span class=\"label label-info\">阶段:    "+ stage +"</span>\n" +
+                "                    <span class=\"label label-info\">面向领域:    "+fields+"</span>\n" +
+                "                    <h3><span  class=\"label label-success\">"+highlights+"</span></h3>\n" +
                 "         </dl>"+
                 "         <hr class=\"simple\" color=\"#6f5499\" />"
             if(language==="english"){
                 option = "<dl class=\"list-group\"  style='margin-bottom: 3%'>\n" +
                     "                    <dt style='margin-bottom: 2%' >\n" +
-                    "                        <a class=\"standard-title\" href=\""+"/detailEng/"+detail_id+"\" target='_blank'>\n" +
-                    "                        <h4 class=\"list-group-item-heading\" >"+ standard +"</h4>\n" +
+                    "                        <a class=\"standard-title\" href=\""+"/tech_detail/"+no+"\" target='_blank'>\n" +
+                    "                        <h4 class=\"list-group-item-heading\" >"+ cleanTechnology +"</h4>\n" +
                     "                        </a>\n" +
                     "                    </dt>\n" +
-                    "                    <span class=\"label label-info\">No.:    "+ region +"</span>\n" +
-                    "                    <span class=\"label label-info\">Country:    "+ region +"</span>\n" +
+                    "                    <span class=\"label label-info\">No.:    "+ no +"</span>\n" +
+                    "                    <span class=\"label label-info\">Country:    "+ country +"</span>\n" +
 
                     "                    <span class=\"label label-default\">Industry:    "+ industry +"</span>\n" +
-                    "                    <span class=\"label label-info\">CleanTechnology:    "+ region +"</span>\n" +
-                    "                    <span class=\"label label-info\">Stage:    "+ number +"</span>\n" +
-                    "                    <span class=\"label label-info\">Fileds:    "+effectiveness+"</span>\n" +
-                    "                    <h3><span  class=\"label label-success\">Highlights:    "+scope+"</span></h3>\n" +
-                    // "                    <span class=\"label label-info\">Scope:    "+scope+"</span>\n" +
+                    // "                    <span class=\"label label-info\">CleanTechnology:    "+ cleanTechnology +"</span>\n" +
+                    "                    <span class=\"label label-info\">Stage:    "+ stage +"</span>\n" +
+                    "                    <span class=\"label label-info\">Fileds:    "+fields+"</span>\n" +
+                    "                    <h3><span  class=\"label label-success\">"+highlights+"</span></h3>\n" +
                     "         </dl>"+
                     "         <hr class=\"simple\" color=\"#6f5499\" />"
             }
             // var option = "<option>"+item+"</option>"
             // console.log(option)
 
-            $("#standard-list").append(option)
+            $("#tech-list").append(option)
         });
     }
 
     function getList(language){
         console.log(language)
-        var url="/getList";
+        var url="/getTechList";
         if(language==="english"){
-            url="/getEngList";
+            url="/getTechEngList";
         }
         // console.log(language)
         $.ajax({

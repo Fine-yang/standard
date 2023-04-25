@@ -43,8 +43,8 @@ $(document).ready(function () {
 
         if (lang === "chinese") {
             $("#page-title").html("“一带一路”重污染行业清洁生产技术清单数据平台");
-            $("#population").html("人口");
-            $("#standard").html("标准");
+            $("#tech").html("技术清单");
+            $("#demand").html("需求清单");
             $("#others").html("其他");
             $("#search-filed").placeholder = "搜索本页";
             $("#search").html("搜索");
@@ -64,9 +64,9 @@ $(document).ready(function () {
 
 
     function getDetail(language){
-        var url= "/getDetail/"
+        var url= "/getTechDetail/"
         if(language==="english"){
-            url="/getEngDetail/"
+            url="/getTechEngDetail/"
         }
         $.ajax({
             // url : '/initTable',
@@ -80,82 +80,77 @@ $(document).ready(function () {
                 detail_title.html("")
                 $.each(arr, function(i, item) {
 
-                    var detail_id = item["detail_id"];
+                    var no = item["no"];
                     var industry = item["industry"];
-                    var region = item["region"];
-                    var number = item["number"];
-                    var effectiveness = item["effectiveness"]
-                    var scope = item["scope"];
-                    var standard = item["standard"];
-                    var abstracts = item["abstracts"];
-                    var year = item["year"]
-                    var link = item["link"]
-                    var filename = item["filename"]
-                    var filedir = item["filedir"]
-                    standard = standard.replace('《','')
-                    standard = standard.replace('》','')
-                    if (number == null){
-                        number = (language==="english")?"null":"无";
-                    }
-                    if(abstracts ==null){
-                        abstracts = (language==="english")?"No abstracts":"暂无简介";
-                    }
-                    if(standard ==null){
-                        standard = (language==="english")?"No standard":"暂未命名";
-                    }
-                    // if(language=="english"){
-                    //     if (number == null){
-                    //         number = "null"
-                    //     }
-                    //     if(abstracts ==null){
-                    //         abstracts = "null"
-                    //     }
-                    //     if(standard ==null){
-                    //         standard = "null"
-                    //     }
-                    // }
+                    var country = item["country"];
+                    var stage = item["productionStage"];
 
-                    var title_option = "<h3>"+standard+"</h3>"
+
+                    var cleanTechnology = item["cleanTechnology"]
+
+                    var fields = item["fields"]
+                    var typicalApplications = item["typicalApplications"]
+
+                    // var comment = item["comment"];
+                    var cost = item["cost"];
+                    var effect = item["effect"];
+
+                    var highlights = item["highlights"]
+                    var innovation = item["innovation"]
+                    var source = item["source"]
+                    var stability = item["stability"]
+                    var technologyOverview = item["technologyOverview"]
+
+
+                    var title_option = "<h3>"+cleanTechnology+"</h3>"
                     detail_title.append(title_option)
-                    var download_url = "<a onclick='readPDF(this)' type='"+filedir+"/"+detail_id+"/"+standard+"'>"+standard+".pdf</a> <button style='border: none; background-color: white' onclick='downloadPDF(this)' value='"+filedir+"/"+detail_id+"/"+standard+"'>下载</button>"
-                    if (filename == null) {
-                        download_url = '暂无文件'
-                    }
                     var option = " <tbody>\n" +
                         "\n" +
                         "                <tr>\n" +
                         "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">行业：</td>\n" +
                         "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+ industry+"</td>\n" +
                         "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">国家：</td>\n" +
-                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\" >"+region+"</td>\n" +
+                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\" >"+country+"</td>\n" +
                         "                </tr>\n" +
                         "                <tr>\n" +
-                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">标准号：</td>\n" +
-                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+number+"</td>\n" +
-                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">年份：</td>\n" +
-                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+year+"</td>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">编号：</td>\n" +
+                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+no+"</td>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">阶段：</td>\n" +
+                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+stage+"</td>\n" +
                         "                </tr>\n" +
                         "                <tr>\n" +
-                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">是否现行：</td>\n" +
-                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+effectiveness+"</td>\n" +
-                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">范围：</td>\n" +
-                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+scope+"</td>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">面向领域：</td>\n" +
+                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+fields+"</td>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">典型应用企业：</td>\n" +
+                        "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+typicalApplications+"</td>\n" +
                         "                </tr>\n" +
                         "                <tr>\n" +
-                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">标准名称：</td>\n" +
-                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+standard+"</td>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">技术简介：</td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+technologyOverview+"</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">技术效果：</td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+effect+"</a></td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">关键词：</td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+highlights+"</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">费用：</td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+cost+"</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">稳定性：</td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+stability+"</td>\n" +
+                        "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">创新点：</td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+innovation+"</td>\n" +
                         "                </tr>\n" +
                         "                <tr>\n" +
                         "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">来源：</td>\n" +
-                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\"><a href='"+link+"'>"+link+"</a></td>\n" +
-                        "                </tr>\n" +
-                        "                <tr>\n" +
-                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">主要内容：</td>\n" +
-                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+abstracts+"</td>\n" +
-                        "                </tr>\n" +
-                        "                <tr>\n" +
-                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">文件链接：</td>\n" +
-                        "                    <td colspan='3' id='file"+detail_id+ "' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+download_url+"</td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+source+"</td>\n" +
                         "                </tr>\n" +
                         "                </tbody>";
                     if(language==="english"){
@@ -164,36 +159,48 @@ $(document).ready(function () {
                             "                <tr>\n" +
                             "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Industry：</td>\n" +
                             "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+ industry+"</td>\n" +
-                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Region：</td>\n" +
-                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\" >"+region+"</td>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Country：</td>\n" +
+                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\" >"+country+"</td>\n" +
                             "                </tr>\n" +
                             "                <tr>\n" +
-                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Number：</td>\n" +
-                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+number+"</td>\n" +
-                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Year：</td>\n" +
-                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+year+"</td>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">NO.：</td>\n" +
+                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+no+"</td>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Production Stage：</td>\n" +
+                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+stage+"</td>\n" +
                             "                </tr>\n" +
                             "                <tr>\n" +
-                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Effectiveness：</td>\n" +
-                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+effectiveness+"</td>\n" +
-                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Scope：</td>\n" +
-                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+scope+"</td>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Fields：</td>\n" +
+                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+fields+"</td>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Typical Applications：</td>\n" +
+                            "                    <td style=\"width: 32% ; padding-bottom: 30px; text-align: left\">"+typicalApplications+"</td>\n" +
                             "                </tr>\n" +
                             "                <tr>\n" +
-                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Standard：</td>\n" +
-                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+standard+"</td>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Technology Overview：</td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+technologyOverview+"</td>\n" +
+                            "                </tr>\n" +
+                            "                <tr>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Effect：</td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+effect+"</a></td>\n" +
+                            "                </tr>\n" +
+                            "                <tr>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Highlights：</td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+highlights+"</td>\n" +
+                            "                </tr>\n" +
+                            "                <tr>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Cost：</td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+cost+"</td>\n" +
+                            "                </tr>\n" +
+                            "                <tr>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Stability：</td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+stability+"</td>\n" +
+                            "                </tr>\n" +
+                            "                <tr>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Innovation：</td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+innovation+"</td>\n" +
                             "                </tr>\n" +
                             "                <tr>\n" +
                             "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Source：</td>\n" +
-                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\"><a href='"+link+"'>"+link+"</a></td>\n" +
-                            "                </tr>\n" +
-                            "                <tr>\n" +
-                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Abstracts：</td>\n" +
-                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+abstracts+"</td>\n" +
-                            "                </tr>\n" +
-                            "                <tr>\n" +
-                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">File：</td>\n" +
-                            "                    <td colspan='3' id='file"+detail_id+ "' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+download_url+"</td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+source+"</td>\n" +
                             "                </tr>\n" +
                             "                </tbody>";
                     }

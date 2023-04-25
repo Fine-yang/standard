@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.demo.dao.TechDetailMapper">
+<mapper namespace="com.example.demo.dao.TechEngDetailMapper">
     <resultMap id="BaseResultMap" type="com.example.demo.entity.TechEngEntity">
-        <id column="NO" jdbcType="VARCHAR" property="NO"/>
-        <result column="Country" jdbcType="VARCHAR" property="Country"/>
-        <result column="Industry" jdbcType="VARCHAR" property="Industry"/>
-        <result column="CleanTechnology" jdbcType="VARCHAR" property="CleanTechnology"/>
-        <result column="ProductionStage" jdbcType="TEXT" property="ProductionStage"/>
-        <result column="TechnologyOverview" jdbcType="TEXT" property="TechnologyOverview"/>
-        <result column="Effect" jdbcType="TEXT" property="Effect"/>
-        <result column="Fields" jdbcType="TEXT" property="Fields"/>
-        <result column="Highlights" jdbcType="TEXT" property="Highlights"/>
-        <result column="TypicalApplications" jdbcType="TEXT" property="TypicalApplications"/>
-        <result column="Cost" jdbcType="TEXT" property="Cost"/>
-        <result column="Stability" jdbcType="TEXT" property="Stability"/>
-        <result column="Innovation" jdbcType="TEXT" property="Innovation"/>
-        <result column="Source" jdbcType="TEXT" property="Source"/>
-<!--        <result column="Comment" jdbcType="TEXT" property="Comment"/>-->
+        <id column="NO" jdbcType="VARCHAR" property="no"/>
+        <result column="Country" jdbcType="VARCHAR" property="country"/>
+        <result column="Industry" jdbcType="VARCHAR" property="industry"/>
+        <result column="CleanTechnology" jdbcType="VARCHAR" property="cleanTechnology"/>
+        <result column="ProductionStage" jdbcType="VARCHAR" property="productionStage"/>
+        <result column="TechnologyOverview" jdbcType="VARCHAR" property="technologyOverview"/>
+        <result column="Effect" jdbcType="VARCHAR" property="effect"/>
+        <result column="Fields" jdbcType="VARCHAR" property="fields"/>
+        <result column="Highlights" jdbcType="VARCHAR" property="highlights"/>
+        <result column="TypicalApplications" jdbcType="VARCHAR" property="typicalApplications"/>
+        <result column="Cost" jdbcType="VARCHAR" property="cost"/>
+        <result column="Stability" jdbcType="VARCHAR" property="stability"/>
+        <result column="Innovation" jdbcType="VARCHAR" property="innovation"/>
+        <result column="Source" jdbcType="VARCHAR" property="source"/>
+<!--        <result column="Comment" jdbcType="VARCHAR" property="Comment"/>-->
     </resultMap>
     <sql id="Base_Column_List">NO,Country,Industry,CleanTechnology,ProductionStage,TechnologyOverview,Effect,Fields,Highlights,TypicalApplications,Cost,Stability,Innovation,Source
     </sql>
