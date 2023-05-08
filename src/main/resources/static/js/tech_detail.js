@@ -100,8 +100,9 @@ $(document).ready(function () {
                     var source = item["source"]
                     var stability = item["stability"]
                     var technologyOverview = item["technologyOverview"]
+                    var routemap_src = "/imgs/routemap/"+no+".png"
 
-
+                    console.log(routemap_src)
                     var title_option = "<h3>"+cleanTechnology+"</h3>"
                     detail_title.append(title_option)
                     var option = " <tbody>\n" +
@@ -152,6 +153,10 @@ $(document).ready(function () {
                         "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">来源：</td>\n" +
                         "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+source+"</td>\n" +
                         "                </tr>\n" +
+                        "                <tr>\n" +
+                        "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">技术路线图：</td>\n" +
+                        "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\"><img width='500px' src='"+routemap_src+"'></td>\n" +
+                        "                </tr>\n" +
                         "                </tbody>";
                     if(language==="english"){
                         option = " <tbody>\n" +
@@ -201,6 +206,10 @@ $(document).ready(function () {
                             "                <tr>\n" +
                             "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Source：</td>\n" +
                             "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\">"+source+"</td>\n" +
+                            "                </tr>\n" +
+                            "                <tr>\n" +
+                            "                    <td style=\"width: 18% ; padding-bottom: 30px;font-weight: bold\">Route Map：</td>\n" +
+                            "                    <td colspan='3' style=\"width: 65% ; padding-bottom: 30px; text-align: left\"><img width='500px' src='"+routemap_src+"'></td>\n" +
                             "                </tr>\n" +
                             "                </tbody>";
                     }

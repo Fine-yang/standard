@@ -147,6 +147,8 @@ $(document).ready(function () {
                     var option = "<option>"+item+"</option>"
                     $("#industry").append(option)
                 })
+                $("#industry").selectpicker({width: 100})
+
                 $("#industry").selectpicker("refresh")
                 $("#industry").selectpicker("render")
             }
@@ -172,6 +174,8 @@ $(document).ready(function () {
                     var option = "<option>"+item+"</option>"
                     $("#region").append(option)
                 })
+                $("#region").selectpicker({width:100})
+
                 $("#region").selectpicker("refresh")
                 $("#region").selectpicker("render")
             }
@@ -197,6 +201,8 @@ $(document).ready(function () {
                     var option = "<option>"+item+"</option>"
                     $("#stage").append(option)
                 })
+                $("#stage").selectpicker({width:160})
+
                 $("#stage").selectpicker("refresh")
                 $("#stage").selectpicker("render")
             }
@@ -245,6 +251,12 @@ $(document).ready(function () {
             var stage = item["productionStage"]
             var fields = item["fields"];
             var highlights = item["highlights"];
+            var highlights_list = highlights.split(/\/|；|;/)
+            var hl_str = "<hr width='1%' />"
+            for (var hl in highlights_list) {
+                hl_str = hl_str +
+                    "                    <span  style='font-size: large' class=\"label label-success\">"+highlights_list[hl]+"</span>\n"
+            }
 
             var option = "<dl class=\"list-group\"  style='margin-bottom: 3%'>\n" +
                 "                    <dt style='margin-bottom: 2%' >\n" +
@@ -252,14 +264,15 @@ $(document).ready(function () {
                 "                        <h4 class=\"list-group-item-heading\" >"+ cleanTechnology +"</h4>\n" +
                 "                        </a>\n" +
                 "                    </dt>\n" +
-                "                    <span class=\"label label-info\">编号:    "+ no +"</span>\n" +
+                // "                    <span class=\"label label-info\">编号:    "+ no +"</span>\n" +
                 "                    <span class=\"label label-info\">国家:    "+ country +"</span>\n" +
 
-                "                    <span class=\"label label-default\">行业:    "+ industry +"</span>\n" +
+                "                    <span class=\"label label-info\">行业:    "+ industry +"</span>\n" +
                 // "                    <span class=\"label label-info\">技术名称:    "+ cleanTechnology +"</span>\n" +
                 "                    <span class=\"label label-info\">阶段:    "+ stage +"</span>\n" +
                 "                    <span class=\"label label-info\">面向领域:    "+fields+"</span>\n" +
-                "                    <h3><span  class=\"label label-success\">"+highlights+"</span></h3>\n" +
+                // "                    <h3><span  class=\"label label-success\">"+highlights+"</span></h3>\n" +
+                hl_str+
                 "         </dl>"+
                 "         <hr class=\"simple\" color=\"#6f5499\" />"
             if(language==="english"){
@@ -269,14 +282,15 @@ $(document).ready(function () {
                     "                        <h4 class=\"list-group-item-heading\" >"+ cleanTechnology +"</h4>\n" +
                     "                        </a>\n" +
                     "                    </dt>\n" +
-                    "                    <span class=\"label label-info\">No.:    "+ no +"</span>\n" +
+                    // "                    <span class=\"label label-info\">No.:    "+ no +"</span>\n" +
                     "                    <span class=\"label label-info\">Country:    "+ country +"</span>\n" +
 
-                    "                    <span class=\"label label-default\">Industry:    "+ industry +"</span>\n" +
+                    "                    <span class=\"label label-info\">Industry:    "+ industry +"</span>\n" +
                     // "                    <span class=\"label label-info\">CleanTechnology:    "+ cleanTechnology +"</span>\n" +
                     "                    <span class=\"label label-info\">Stage:    "+ stage +"</span>\n" +
                     "                    <span class=\"label label-info\">Fileds:    "+fields+"</span>\n" +
-                    "                    <h3><span  class=\"label label-success\">"+highlights+"</span></h3>\n" +
+                    // "                    <h3><span  class=\"label label-success\">"+highlights+"</span></h3>\n" +
+                    hl_str+
                     "         </dl>"+
                     "         <hr class=\"simple\" color=\"#6f5499\" />"
             }

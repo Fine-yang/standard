@@ -232,30 +232,30 @@ $(document).ready(function () {
             var option = "<dl class=\"list-group\"  style='margin-bottom: 3%'>\n" +
                 "                    <dt style='margin-bottom: 2%' >\n" +
                 "                        <a class=\"standard-title\" href=\""+"/demand_detail/"+demand_id+"\" target='_blank'>\n" +
-                "                        <h4 class=\"list-group-item-heading\" >"+ tech +"</h4>\n" +
+                "                        <h4 class=\"list-group-item-heading\" style='color: #533f03'>"+ tech +"</h4>\n" +
                 "                        </a>\n" +
                 "                    </dt>\n" +
 
-                "                    <span class=\"label label-info\">国家地区:    "+ region +"</span>\n" +
-                "                    <span class=\"label label-info\">需求行业:    "+ industry +"</span>\n" +
-                "                    <span class=\"label label-info\">需求阶段:    "+ stage +"</span>\n" +
-                "                    <span class=\"label label-info\">需求技术类别:    "+tech_categories+"</span>\n" +
-                "                    <span class=\"label label-info\">具体技术:    "+tech+"</span>\n" +
+                "                    <span class=\"label label-default\" style='background-color: #4EDCBF'>国家地区:    "+ region +"</span>\n" +
+                "                    <span class=\"label label-default\" style='background-color: #4EDCBF'>需求行业:    "+ industry +"</span>\n" +
+                "                    <span class=\"label label-default\" style='background-color: #4EDCBF'>需求阶段:    "+ stage +"</span>\n" +
+                "                    <span class=\"label label-default\" style='background-color: #4EDCBF'>需求技术类别:    "+tech_categories+"</span>\n" +
+                // "                    <span class=\"label label-default\">具体技术:    "+tech+"</span>\n" +
                 "         </dl>"+
                 "         <hr class=\"simple\" color=\"#6f5499\" />"
             if(language==="english"){
                 option = "<dl class=\"list-group\"  style='margin-bottom: 3%'>\n" +
-                    "                    <dt style='margin-bottom: 2%' >\n" +
+                    "                    <dt style='margin-bottom: 2%; color: #533f03' >\n" +
                     "                        <a class=\"standard-title\" href=\""+"/demand_detail/"+demand_id+"\" target='_blank'>\n" +
-                    "                        <h4 class=\"list-group-item-heading\" >"+ tech +"</h4>\n" +
+                    "                        <h4 class=\"list-group-item-heading\" style='color: #533f03'>"+ tech +"</h4>\n" +
                     "                        </a>\n" +
                     "                    </dt>\n" +
-                    "                    <span class=\"label label-info\">Country/Region:    "+ region +"</span>\n" +
-                    "                    <span class=\"label label-default\">Industry:    "+ industry +"</span>\n" +
+                    "                    <span class=\"label label-default\" style='background-color: #4EDCBF'>Country/Region:    "+ region +"</span>\n" +
+                    "                    <span class=\"label label-default\" style='background-color: #4EDCBF'>Industry:    "+ industry +"</span>\n" +
 
-                    "                    <span class=\"label label-info\">Production Stage:    "+ stage +"</span>\n" +
-                    "                    <span class=\"label label-info\">Technology   Categories:    "+tech_categories+"</span>\n" +
-                    "                    <span class=\"label label-info\">Technology:    "+ tech +"</span>\n" +
+                    "                    <span class=\"label label-default\" style='background-color: #4EDCBF'>Production Stage:    "+ stage +"</span>\n" +
+                    "                    <span class=\"label label-default\" style='background-color: #4EDCBF'>Technology   Categories:    "+tech_categories+"</span>\n" +
+                    // "                    <span class=\"label label-default\">Technology:    "+ tech +"</span>\n" +
                     "         </dl>"+
                     "         <hr class=\"simple\" color=\"#6f5499\" />"
             }
