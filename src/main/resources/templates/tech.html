@@ -15,9 +15,9 @@
     <script th:src="@{/plugins/echarts.min.js}"></script>
     <style type="text/css">
         html, body {width:100%;height:100%;} /*非常重要的样式让背景图片100%适应整个屏幕*/
-        .bg { float: top; display: table;width: 100%;height:100%;padding: 100px 0;text-align: center;background:  no-repeat bottom center ;
-            background-image: linear-gradient(to top,rgba(255,255,255,1) 10%, rgba(255,255,255,0.8) 30%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0.2) 60%, rgba(255,255,255,0) 90%,rgba(0,0,0,0.4) 6%), url("/imgs/img.png");background-size: cover;}
-        .my-navbar {padding:20px 0;transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;}
+        .bg {margin-top: 4%; float: bottom; display: table;width: 100%;height:100%;padding: 100px 0;text-align: center;background:  no-repeat top center ;
+            background-image: linear-gradient(to top,rgba(255,255,255,1) 10%, rgba(255,255,255,0.8) 30%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0.2) 60%, rgba(255,255,255,0) 100%,rgba(0,0,0,0.4) 6%), url("/imgs/background.png");background-size: cover;}
+        .my-navbar { background:#343a40; padding:20px 0;transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;}
         .my-navbar a{background:transparent !important;color:#fff !important}
         .my-navbar a:hover {color:#45bcf9 !important;background:transparent;outline:0}
         .my-navbar a {transition: color 0.5s ease-in-out;}/*-webkit-transition ;-moz-transition*/
@@ -93,7 +93,7 @@
             }else {$(".navbar-fixed-top").removeClass("top-nav");}
         })</script>
 
-    <div class="panel  panel-info" style="margin-left: 10%; margin-right: 10%; width: 80%; position: absolute ; top: 20%">
+    <div class="panel  panel-info" style="margin-left: 10%; margin-right: 10%; width: 80%; position: absolute ; top: 40%">
 
         <div class="panel-heading">
             <div style="margin-left: 10%; width: 80%;">
