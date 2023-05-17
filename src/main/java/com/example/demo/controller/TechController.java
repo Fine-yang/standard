@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class TechController {
@@ -33,6 +32,10 @@ public class TechController {
         return "tech";
     }
 
+    @GetMapping("about")
+    public String about(){
+        return "about";
+    }
     @GetMapping({"getTechDetail/{NO}"})
     @ResponseBody
     public List<TechEntityVO> getDetail(@PathVariable("NO") String NO){
@@ -75,12 +78,39 @@ public class TechController {
     @GetMapping({"/getAllTechProductionStage"})
     @ResponseBody
     public List<String> getAllProductionStage() {
-        return techService.getAllProductionStage();
+        List<String> stages = techService.getAllProductionStage();
+        Set<String> stageSet = new HashSet<>();
+        for (int i = 0 ; i< stages.size(); i++){
+            String stage = stages.get(i);
+            String[] ss =  stage.split("/|;|,|；");
+//            stageSet.addAll(ss)
+            for (int j = 0; j< ss.length; j++){
+                stageSet.add(ss[j]);
+            }
+
+        }
+        List<String> result = new ArrayList<String>();
+        result.addAll(stageSet);
+        return result;
     }
     @GetMapping({"/getAllTechFields"})
     @ResponseBody
     public List<String> getAllFiedls() {
-        return techService.getAllFields();
+        List<String> fields = techService.getAllFields();
+        Set<String> fieldSet = new HashSet<>();
+        for (int i = 0 ; i< fields.size(); i++){
+            String stage = fields.get(i);
+            String[] ss =  stage.split("/|;|,|；");
+//            stageSet.addAll(ss)
+            for (int j = 0; j< ss.length; j++){
+                fieldSet.add(ss[j]);
+            }
+
+        }
+        List<String> result = new ArrayList<String>();
+        result.addAll(fieldSet);
+        return result;
+//        return techService.getAllFields();
     }
 
     @GetMapping({"/techFilter"})

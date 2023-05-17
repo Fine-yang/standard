@@ -67,10 +67,10 @@
                 and Industry=#{industry}
             </if>
             <if test="productionStage!=null">
-                and ProductionStage=#{productionStage}
+                and ProductionStage like #{productionStage}
             </if>
             <if test="fields!=null">
-                and Fields=#{fields}
+                and Fields like #{fields}
             </if>
         </where>
     </select>
