@@ -15,9 +15,9 @@
     <script th:src="@{/plugins/echarts.min.js}"></script>
     <style type="text/css">
         html, body {width:100%;height:100%;} /*非常重要的样式让背景图片100%适应整个屏幕*/
-        .bg {margin-top: 4%; float: bottom; display: table;width: 100%;height:100%;padding: 100px 0;text-align: center;background:  no-repeat top center ;
+        .bg { float: bottom; display: table;width: 100%;height:100%;padding: 100px 0;text-align: center;background:  no-repeat top center ;
             background-image: linear-gradient(to top,rgba(255,255,255,1) 10%, rgba(255,255,255,0.8) 30%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0.2) 60%, rgba(255,255,255,0) 100%,rgba(0,0,0,0.4) 6%), url("/imgs/background.png");background-size: cover;}
-        .my-navbar { background:#343a40; padding:20px 0;transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;}
+        .my-navbar {margin-left: 10%; margin-right: 10%;width: 80%;position: absolute; top: 30%; background:#5379D9; padding:0px 0;transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;}
         .my-navbar a{background:transparent !important;color:#fff !important}
         .my-navbar a:hover {color:#45bcf9 !important;background:transparent;outline:0}
         .my-navbar a {transition: color 0.5s ease-in-out;}/*-webkit-transition ;-moz-transition*/
@@ -36,6 +36,12 @@
 </head>
 <body>
 <content id="content" >
+    <div style="position: absolute; top: 20%;margin-right: 20%; margin-left: 20%;width: 60%">
+        <div class="form-group" style="width: 90%; float: left">
+            <input style="height: 50px; border-radius: 30px"  id="search-filed" type="text" class="form-control input-medium search-query" placeholder="Search...">
+        </div>
+        <button style="float: right; border-radius: 20px;" id="search"  class="btn btn-default btn-lg">Search</button>
+    </div>
     <nav class="navbar navbar-fixed-top my-navbar" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -46,13 +52,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="page-title" class="navbar-brand" href="#">Belt and Road Initiative Industry Cleaner Production Technology Inventory Database</a>
+<!--                <a id="page-title" class="navbar-brand" href="#">Belt and Road Initiative Industry Cleaner Production Technology Inventory Database</a>-->
             </div>
             <div class="collapse navbar-collapse" id="example-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li ><a id="tech" style="font-size: large" href="/tech">Technology Inventory</a></li>
                     <li class="active"><a id="demand"  href="/demand" style="font-size: large; color: #4EDCBF !important;">Demand Inventory</a></li>
-                    <li ><a  id="others"  href="#">Others</a></li>
+                    <li ><a  id="others"  href="#">Introduction</a></li>
                 </ul>
                 <!--                <button type="button" class="btn btn-danger dropdown-toggle nav navbar-nav navbar-right" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
                 <!--                    Select language<span class="caret"></span>-->
@@ -64,8 +70,8 @@
                 <!--                    <li><a href="#">Another link</a></li>-->
                 <!--                </ul>-->
                 <ul class="nav navbar-nav navbar-right">
-                    <li ><a id="login"  href="#">Login</a></li>
-                    <li ><a  id="register" href="#">Register</a></li>
+<!--                    <li ><a id="login"  href="#">Login</a></li>-->
+<!--                    <li ><a  id="register" href="#">Register</a></li>-->
                     <li class="dropdown"><a id="language" class="dropdown-toggle" data-toggle="dropdown" href="#">Language<b class="caret"></b></a>
                         <ul class="dropdown-menu" style="text-align: right; background-color: rgba(0,0,0,0.3);  width: 100px !important;">
                             <li><a id="chinese" href="#" >Chinese</a></li>
@@ -77,23 +83,20 @@
                 </ul>
                 <div class="navbar-form navbar-right">
                     <!--                    <button id="chang-bg" class="btn" >Change background</button>-->
-                    <div class="form-group">
-                        <input id="search-filed" type="text" class="form-control" placeholder="Search...">
-                    </div>
-                    <button id="search"  class="btn btn-default">Search</button>
                 </div>
 
             </div>
         </div>
     </nav>
     <div class="bg bg-blur" id="bg-img"></div>
-    <script>
-        $(window).scroll(function () {
-            if ($(".navbar").offset().top > 50) {$(".navbar-fixed-top").addClass("top-nav");
-            }else {$(".navbar-fixed-top").removeClass("top-nav");}
-        })</script>
+<!--    <script>-->
+<!--        $(window).scroll(function () {-->
+<!--            if ($(".navbar").offset().top > 50) {$(".navbar-fixed-top").addClass("top-nav");-->
+<!--            }else {$(".navbar-fixed-top").removeClass("top-nav");}-->
+<!--        })-->
+<!--    </script>-->
 
-    <div class="panel  panel-info" style="margin-left: 10%; margin-right: 10%; width: 80%; position: absolute ; top: 40%">
+    <div class="panel  panel-success" style="margin-left: 10%; margin-right: 10%; width: 80%; position: absolute ; top: 40%">
 
         <div class="panel-heading">
             <div style="margin-left: 10%; width: 80%;">

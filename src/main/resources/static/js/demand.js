@@ -40,7 +40,7 @@ $(document).ready(function () {
             $("#page-title").html("“一带一路”重污染行业清洁生产技术清单数据平台");
             $("#tech").html("技术清单");
             $("#demand").html("需求清单");
-            $("#others").html("其他");
+            $("#others").html("关于平台");
             $("#search-filed").placeholder = "搜索本页";
             $("#search").html("搜索");
             $("#login").html("登录");
